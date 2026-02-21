@@ -10,7 +10,7 @@ import { slideUp } from './variants';
 export function Header() {
   return (
     <motion.header
-      className='relative h-screen overflow-hidden bg-[#0a0a0a] text-background'
+      className='relative h-screen overflow-hidden bg-[#111111] text-background'
       variants={slideUp}
       initial='initial'
       animate='enter'
@@ -18,7 +18,7 @@ export function Header() {
       {/* Foreground layer to show the entire character */}
       <div className='absolute left-0 right-0 -top-[15%] h-[130%] md:h-[145%] pointer-events-none'>
         <Image
-          src='/photo/IMG_1075.PNG'
+          src='/photo/Guto.png'
           alt='Augusto Barros Personal Picture'
           fill
           sizes='110vw'

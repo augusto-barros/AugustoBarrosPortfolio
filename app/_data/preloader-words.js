@@ -9,3 +9,15 @@ export const preloaderWords = [
   'Guten tag',
   'Hallo',
 ];
+
+export const workPreloaderWords = [
+  'Work',
+  'Travail',
+  'Lavoro',
+  'Trabalho',
+  'عمل',
+  '仕事',
+  'Arbete',
+  'Arbeit',
+  'Werk',
+];

@@ -14,14 +14,14 @@ export function Transition({ children }) {
   const [isLoading, setLoading] = useState(true);
   const pathname = usePathname();
 
-  useLenis();
+  const isWorkScreen = pathname?.startsWith('/work');
   useTimeOut({
     callback: () => {
       setLoading(false);
       window.scrollTo(0, 0);
     },
     duration: 2000,
-    deps: [],
+    deps: [pathname],
   });
 
   return (
