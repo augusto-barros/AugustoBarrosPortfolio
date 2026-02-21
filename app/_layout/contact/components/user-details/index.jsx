@@ -23,7 +23,7 @@ export function UserDetails({ transformX }) {
               src='Dennis-Portfolio/images/mqtwxh5znybowgaljrbp'
               className='rounded-full object-cover'
               fill={true}
-              alt='Dennis Snellenberg Profile Picture'
+              alt='Augusto Barros Profile Picture'
             />
           </ImageWrapper>
           <MainTitle>Let’s work</MainTitle>
@@ -54,13 +54,13 @@ export function UserDetails({ transformX }) {
       <Row>
         <div className='flex w-full flex-col gap-4 lg:flex-row'>
           <div>
-            <a href='mailto:info@dennissnellenberg.com'>
+            <a href='mailto:info@augustobarros.com'>
               <MagneticButton
                 variant='outline'
                 size='md'
                 className='w-full border-muted-foreground'
               >
-                info@dennissnellenberg.com
+                info@augustobarros.com
               </MagneticButton>
             </a>
           </div>
