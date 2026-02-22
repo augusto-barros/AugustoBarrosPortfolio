@@ -4,3 +4,4 @@ export * from './project-options';
 export * from './social-medias';
 export * from './thumbnail-options';
 export * from './work-options';
+export * from './work-details';

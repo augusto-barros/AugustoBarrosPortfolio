@@ -58,7 +58,7 @@ export function Preloader() {
       {width > 0 ? (
         <>
           <MotionComponent
-            className='text-3xl text-background md:text-4xl'
+            className='text-6xl text-white'
             variants={fade}
             initial='initial'
             animate='enter'
