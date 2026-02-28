@@ -54,9 +54,9 @@ export function TransitionProvider({ children }) {
       setTimeout(() => {
         setPhase('sweepDown');
         // After sweep-down finishes, go back to idle
-        setTimeout(() => setPhase('idle'), 900);
-      }, 600);
-    }, 700);
+        setTimeout(() => setPhase('idle'), 700);
+      }, 400);
+    }, 500);
   }, [router]);
 
   const isVisible = phase !== 'idle';
@@ -73,7 +73,7 @@ export function TransitionProvider({ children }) {
             className='fixed inset-0 z-[100] h-screen w-screen bg-foreground'
             initial={{ top: '100vh' }}
             animate={{ top: phase === 'sweepDown' ? '-100vh' : 0 }}
-            transition={{ duration: phase === 'sweepDown' ? 0.8 : 0.7, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: phase === 'sweepDown' ? 0.6 : 0.5, ease: [0.76, 0, 0.24, 1] }}
           >
             {/* Text label — fades in during sweep-up, fades out on sweep-down */}
             {showMultilingualHello ? (
@@ -105,7 +105,7 @@ export function TransitionProvider({ children }) {
                     ? `M0 300 L${width} 300 L${width} 300 Q${width / 2} 0 0 300`
                     : `M0 300 L${width} 300 L${width} 300 Q${width / 2} 300 0 300`,
                 }}
-                transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+                transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
               />
             </svg>
 
