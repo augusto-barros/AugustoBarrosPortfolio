@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { MagneticButton, ClientImage } from '@/components';
-import { Contact, Navbar, Transition } from '@/layout';
+import { ClientImage, MagneticButton } from '@/components';
 import { workDetails } from '@/data';
+import { Contact, Navbar, Transition } from '@/layout';
+
 import { WorkCurve } from '../components/work-curve';
 
 export async function generateMetadata({ params }) {

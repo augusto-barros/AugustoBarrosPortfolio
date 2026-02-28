@@ -11,18 +11,27 @@ import { SocialInfo, UserDetails } from './components';
 export function Contact() {
   /** @type {import('react').MutableRefObject<HTMLElement>} */
   const containerRef = useRef(null);
-  const { transformX, transformY } = useContactSlider(containerRef);
+  const { transformX } = useContactSlider(containerRef);
 
   return (
-    <motion.footer
-      ref={containerRef}
-      className='relative max-h-screen bg-foreground text-background'
-      style={{ y: transformY }}
-    >
-      <div style={{ paddingBlock: 'clamp(5em, 21vh, 12em)' }}>
-        <UserDetails transformX={transformX} />
-        <SocialInfo />
-      </div>
-    </motion.footer>
+    <section id='contact' className='relative'>
+      <motion.footer
+        ref={containerRef}
+        className='relative min-h-screen bg-foreground text-background'
+      >
+        <div
+          className='flex min-h-screen flex-col'
+          style={{
+            paddingBlockStart: 'clamp(2.5em, 10vh, 5em)',
+            paddingBlockEnd: 'clamp(1.5em, 5vh, 2.5em)',
+          }}
+        >
+          <UserDetails transformX={transformX} />
+          <div className='mt-auto'>
+            <SocialInfo />
+          </div>
+        </div>
+      </motion.footer>
+    </section>
   );
 }

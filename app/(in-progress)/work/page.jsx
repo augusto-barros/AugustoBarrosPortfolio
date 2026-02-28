@@ -1,5 +1,6 @@
 import { WorkList } from '@/components';
 import { Contact, Navbar, Transition } from '@/layout';
+
 import { WorkCurve } from './components/work-curve';
 
 /** @type {import('next').Metadata} */

@@ -12,7 +12,7 @@ export const navItems = [
     title: 'about',
   },
   {
-    href: '/contact',
+    href: '#contact',
     title: 'contact',
   },
 ];

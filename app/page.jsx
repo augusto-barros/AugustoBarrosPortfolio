@@ -3,7 +3,6 @@ import {
   Description,
   Header,
   Navbar,
-  Project,
   Thumbnail,
   Transition,
 } from '@/layout';
@@ -23,7 +22,6 @@ export default function Home() {
       <main>
         <Description />
         <Thumbnail />
-        <Project />
       </main>
       <Contact />
     </Transition>

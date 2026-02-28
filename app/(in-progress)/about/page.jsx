@@ -1,5 +1,5 @@
 import { InProgress } from '@/components';
-import { Transition } from '@/layout';
+import { Contact, Navbar, Transition } from '@/layout';
 
 /** @type {import('next').Metadata} */
 export const metadata = {
@@ -11,7 +11,9 @@ export const metadata = {
 export default function About() {
   return (
     <Transition>
+      <Navbar />
       <InProgress>About Page</InProgress>
+      <Contact />
     </Transition>
   );
 }

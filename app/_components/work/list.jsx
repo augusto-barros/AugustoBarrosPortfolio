@@ -2,10 +2,9 @@
 
 import { useRef, useState } from 'react';
 
+import { MagneticButton } from '@/components';
 import { workOptions } from '@/data';
 import { useFollowPointer } from '@/hooks';
-import { MagneticButton } from '@/components';
-
 
 import { WorkItem } from './item';
 import { WorkModal } from './modal';

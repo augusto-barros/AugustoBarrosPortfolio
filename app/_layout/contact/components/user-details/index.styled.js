@@ -5,8 +5,9 @@ import { styled } from 'styled-components';
 const containerValue = ({ theme }) => theme?.breakpoints?.container;
 
 export const Container = styled.div`
-  padding-inline: calc(clamp(2.5em, 8vw, 8em) * 2);
+  padding-inline: clamp(2.5em, 4vw, 8em);
   margin-inline: auto;
+  width: 100%;
 
   @media screen and (min-width: ${containerValue}) {
     max-width: ${containerValue};
@@ -14,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const Row = styled.div`
-  --default-padding: clamp(5em, 21vh, 12em);
+  --default-padding: clamp(2.5em, 10vh, 5em);
 
   &:nth-child(1) {
     padding-block-end: calc(var(--default-padding) / 2);
