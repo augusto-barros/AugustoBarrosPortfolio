@@ -4,9 +4,8 @@ import { useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { Dot } from 'lucide-react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
+import { TransitionLink } from '@/components';
 import { navItems } from '@/data';
 
 import { scale, slideOut } from './variants';
@@ -35,9 +34,9 @@ export function OffcanvasLinks() {
         >
           <Dot size={36} />
         </motion.div>
-        <Link href={href} className='text-6xl capitalize'>
+        <TransitionLink href={href} className='text-6xl capitalize'>
           {title}
-        </Link>
+        </TransitionLink>
       </motion.li>
     );
   });

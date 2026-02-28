@@ -2,8 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
-import Link from 'next/link';
-
+import { TransitionLink } from '@/components';
 import { socialMedias } from '@/data';
 
 import { ListTitle } from './index.styled';
@@ -37,9 +36,9 @@ export function SocialInfo() {
         key={title}
         className='border-b border-solid border-b-transparent transition-all duration-300 ease-in-expo hover:border-b-border'
       >
-        <Link href={href} target='_blank' rel='noopener noreferrer'>
+        <TransitionLink href={href} target='_blank' rel='noopener noreferrer'>
           {title}
-        </Link>
+        </TransitionLink>
       </li>
     );
   });

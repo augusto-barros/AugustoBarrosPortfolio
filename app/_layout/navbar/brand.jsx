@@ -1,11 +1,12 @@
 'use client';
 
 import { Copyright } from 'lucide-react';
-import Link from 'next/link';
+
+import { TransitionLink } from '@/components';
 
 export function NavbarBrand() {
   return (
-    <Link href='/' className='group flex cursor-pointer pb-5'>
+    <TransitionLink href='/' className='group flex cursor-pointer pb-5'>
       <div className='transition-transform duration-500 ease-in-expo group-hover:rotate-[360deg]'>
         <Copyright />
       </div>
@@ -21,6 +22,6 @@ export function NavbarBrand() {
           Go Home?
         </h5>
       </div>
-    </Link>
+    </TransitionLink>
   );
 }

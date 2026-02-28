@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { TransitionLink } from '@/components';
 
 export function WorkItem({
     id,
@@ -21,7 +21,7 @@ export function WorkItem({
                 moveItems(clientX, clientY);
             }}
         >
-            <Link
+            <TransitionLink
                 href={href}
                 className='flex items-center justify-between w-full p-4 flex-wrap hover:bg-black/5 hover:dark:bg-white/5 transition-colors'
                 style={{
@@ -41,7 +41,7 @@ export function WorkItem({
                 <div className='w-[10%] text-lg max-lg:hidden text-right font-light'>
                     {year}
                 </div>
-            </Link>
+            </TransitionLink>
         </li>
     );
 }

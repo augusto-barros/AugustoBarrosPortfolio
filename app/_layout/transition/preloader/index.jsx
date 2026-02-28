@@ -31,20 +31,20 @@ export function Preloader() {
     deps: [index, words.length],
   });
 
-  const initialPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${height + 300
-    } 0 ${height}  L0 0`;
-  const targetPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2
-    } ${height} 0 ${height}  L0 0`;
+  const initialPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${height} 0 ${height}  L0 0`;
+  const targetPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${height} 0 ${height}  L0 0`;
 
   /** @type {import('framer-motion').Variants} */
   const curve = {
     initial: {
       d: initialPath,
-      transition: { duration: 0.7, ease: [0.9, 0, 0.1, 1] },
+    },
+    enter: {
+      d: initialPath,
     },
     exit: {
       d: targetPath,
-      transition: { duration: 0.7, ease: [0.9, 0, 0.1, 1], delay: 0.3 },
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
     },
   };
 
@@ -53,6 +53,7 @@ export function Preloader() {
       className='fixed z-50 h-screen w-screen cursor-wait bg-foreground'
       variants={slideUp}
       initial='initial'
+      animate='enter'
       exit='exit'
     >
       {width > 0 ? (
@@ -71,6 +72,7 @@ export function Preloader() {
               className='fill-foreground'
               variants={curve}
               initial='initial'
+              animate='enter'
               exit='exit'
             />
           </motion.svg>
