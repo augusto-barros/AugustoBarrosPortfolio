@@ -15,12 +15,10 @@ export default function Work() {
     <Transition>
       <Navbar />
       <WorkCurve>
-        <main className="mx-auto min-h-screen max-w-[1400px] px-4 pb-20 pt-40 md:px-10">
-          <h1 className="mb-20 pt-10 text-5xl font-medium leading-tight tracking-tight md:w-4/5 md:text-7xl lg:text-[105px]">
+        <main className='mx-auto min-h-screen max-w-[1400px] px-4 pb-20 pt-40 md:px-10'>
+          <h1 className='mb-20 pt-10 text-5xl font-medium leading-tight tracking-tight md:w-4/5 md:text-7xl lg:text-[105px]'>
             Creating next level digital products
           </h1>
-
-
 
           <WorkList />
         </main>

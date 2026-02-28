@@ -9,7 +9,7 @@ import { MagneticButton, ParallaxFade, ParallaxReveal } from '@/components';
 import { Title, Wrapper } from './index.styled';
 
 const phrase =
-  'I started in advertising. I moved into code and development. Now I sit in the intersection of both. Let\'s create something together.';
+  "I started in advertising. I moved into code and development. Now I sit in the intersection of both. Let's create something together.";
 
 export function Description() {
   return (
@@ -24,8 +24,9 @@ export function Description() {
         <div className='basis-7/12 lg:basis-3/12'>
           <ParallaxFade>
             <Balancer as='p' className='mt-0 text-base lg:text-lg'>
-              As a developer, I care about architecture, performance and clean systems.
-              As a creative copywriter, I care about what people feel when they use a product.
+              As a developer, I care about architecture, performance and clean
+              systems. As a creative copywriter, I care about what people feel
+              when they use a product.
             </Balancer>
           </ParallaxFade>
         </div>

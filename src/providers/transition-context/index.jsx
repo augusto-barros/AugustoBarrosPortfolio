@@ -1,6 +1,13 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Dot } from 'lucide-react';
@@ -42,28 +49,33 @@ export function TransitionProvider({ children }) {
   const [label, setLabel] = useState('');
   const { width } = useDimensions();
 
-  const animateTransition = useCallback((href, transitionLabel = '') => {
-    setLabel(transitionLabel);
-    setPhase('sweepUp');
-    clientNavRef.current = true;
+  const animateTransition = useCallback(
+    (href, transitionLabel = '') => {
+      setLabel(transitionLabel);
+      setPhase('sweepUp');
+      clientNavRef.current = true;
 
-    // After sweep-up covers the screen, navigate
-    setTimeout(() => {
-      router.push(href);
-      // Wait longer so the new page renders fully under the overlay before revealing
+      // After sweep-up covers the screen, navigate
       setTimeout(() => {
-        setPhase('sweepDown');
-        // After sweep-down finishes, go back to idle
-        setTimeout(() => setPhase('idle'), 700);
-      }, 400);
-    }, 500);
-  }, [router]);
+        router.push(href);
+        // Wait longer so the new page renders fully under the overlay before revealing
+        setTimeout(() => {
+          setPhase('sweepDown');
+          // After sweep-down finishes, go back to idle
+          setTimeout(() => setPhase('idle'), 700);
+        }, 400);
+      }, 500);
+    },
+    [router],
+  );
 
   const isVisible = phase !== 'idle';
   const showMultilingualHello = label === 'Home' && phase === 'sweepUp';
 
   return (
-    <TransitionContext.Provider value={{ animateTransition, clientNavRef, phase }}>
+    <TransitionContext.Provider
+      value={{ animateTransition, clientNavRef, phase }}
+    >
       {children}
 
       <AnimatePresence>
@@ -73,7 +85,10 @@ export function TransitionProvider({ children }) {
             className='fixed inset-0 z-[100] h-screen w-screen bg-foreground'
             initial={{ top: '100vh' }}
             animate={{ top: phase === 'sweepDown' ? '-100vh' : 0 }}
-            transition={{ duration: phase === 'sweepDown' ? 0.6 : 0.5, ease: [0.76, 0, 0.24, 1] }}
+            transition={{
+              duration: phase === 'sweepDown' ? 0.6 : 0.5,
+              ease: [0.76, 0, 0.24, 1],
+            }}
           >
             {/* Text label — fades in during sweep-up, fades out on sweep-down */}
             {showMultilingualHello ? (
@@ -94,16 +109,22 @@ export function TransitionProvider({ children }) {
 
             {/* SVG on the TOP edge — visible during sweep-up, hidden during sweep-down */}
             <svg
-              className='absolute left-0 top-0 h-[300px] w-full -translate-y-[99%]'
-              style={{ opacity: phase === 'sweepUp' ? 1 : 0, transition: 'opacity 0.15s' }}
+              className='absolute left-0 top-0 h-[300px] w-full translate-y-[-99%]'
+              style={{
+                opacity: phase === 'sweepUp' ? 1 : 0,
+                transition: 'opacity 0.15s',
+              }}
             >
               <motion.path
                 className='fill-foreground'
-                initial={{ d: `M0 300 L${width} 300 L${width} 300 Q${width / 2} 300 0 300` }}
+                initial={{
+                  d: `M0 300 L${width} 300 L${width} 300 Q${width / 2} 300 0 300`,
+                }}
                 animate={{
-                  d: phase === 'sweepUp'
-                    ? `M0 300 L${width} 300 L${width} 300 Q${width / 2} 0 0 300`
-                    : `M0 300 L${width} 300 L${width} 300 Q${width / 2} 300 0 300`,
+                  d:
+                    phase === 'sweepUp'
+                      ? `M0 300 L${width} 300 L${width} 300 Q${width / 2} 0 0 300`
+                      : `M0 300 L${width} 300 L${width} 300 Q${width / 2} 300 0 300`,
                 }}
                 transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
               />
@@ -112,7 +133,10 @@ export function TransitionProvider({ children }) {
             {/* SVG on the BOTTOM edge — hidden during sweep-up, visible during sweep-down */}
             <svg
               className='absolute bottom-0 left-0 h-[300px] w-full translate-y-[99%]'
-              style={{ opacity: phase === 'sweepDown' ? 1 : 0, transition: 'opacity 0.15s' }}
+              style={{
+                opacity: phase === 'sweepDown' ? 1 : 0,
+                transition: 'opacity 0.15s',
+              }}
             >
               <path
                 className='fill-foreground'

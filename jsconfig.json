@@ -1,36 +1,16 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/components": [
-        "./src/components/index.js"
-      ],
-      "@/config": [
-        "./src/config/index.js"
-      ],
-      "@/data": [
-        "./src/data/index.js"
-      ],
-      "@/fonts": [
-        "./src/fonts/index.js"
-      ],
-      "@/hooks": [
-        "./src/hooks/index.js"
-      ],
-      "@/layout": [
-        "./src/layout/index.js"
-      ],
-      "@/lib": [
-        "./src/lib/index.js"
-      ],
-      "@/providers": [
-        "./src/providers/index.jsx"
-      ],
-      "@/utils": [
-        "./src/utils/index.js"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@/components": ["./src/components/index.js"],
+      "@/config": ["./src/config/index.js"],
+      "@/data": ["./src/data/index.js"],
+      "@/fonts": ["./src/fonts/index.js"],
+      "@/hooks": ["./src/hooks/index.js"],
+      "@/layout": ["./src/layout/index.js"],
+      "@/lib": ["./src/lib/index.js"],
+      "@/providers": ["./src/providers/index.jsx"],
+      "@/utils": ["./src/utils/index.js"],
+      "@/*": ["./src/*"]
     }
   }
 }

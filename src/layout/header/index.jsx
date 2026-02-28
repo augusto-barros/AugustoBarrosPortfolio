@@ -28,9 +28,9 @@ export function Header() {
       animate='enter'
     >
       {/* Foreground layer to show the entire character */}
-      <div className='pointer-events-none absolute inset-x-0 -top-[15%] h-[130%] md:h-[145%]'>
+      <div className='pointer-events-none absolute inset-x-0 top-[-15%] h-[130%] md:h-[145%]'>
         <Image
-          src='/photo/Guto_transparent.png'
+          src='/photo/Guto_transparent.webp'
           alt='Augusto Barros Personal Picture'
           fill
           sizes='110vw'

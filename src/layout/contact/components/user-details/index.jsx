@@ -20,7 +20,7 @@ export function UserDetails({ transformX }) {
         <div className='flex items-center gap-8'>
           <ImageWrapper>
             <Image
-              src='/photo/Guto_portrait.png'
+              src='/photo/Guto_portrait.webp'
               className='rounded-full object-cover'
               fill
               alt='Augusto Barros Profile Picture'

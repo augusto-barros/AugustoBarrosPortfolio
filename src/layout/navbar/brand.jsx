@@ -7,10 +7,6 @@ import { TransitionLink } from '@/components';
 export function NavbarBrand() {
   return (
     <TransitionLink href='/' className='group flex cursor-pointer pb-5'>
-      <div className='transition-transform duration-500 ease-in-expo group-hover:rotate-[360deg]'>
-        <Copyright />
-      </div>
-
       <div className='relative ms-2 flex overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-expo group-hover:pe-8'>
         <h5 className='transition-transform duration-500 ease-in-expo group-hover:-translate-x-full'>
           Hi, I&apos;m

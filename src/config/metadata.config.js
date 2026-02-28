@@ -3,7 +3,8 @@ export const rootMetadata = {
   metadataBase: new URL('https://dennis-snellenberg-portfolio.vercel.app/'),
   title: {
     template: '%s | Augusto Barros',
-    default: 'Augusto Barros • Full Stack Developer, Mobile Developer & Creative Copywriter',
+    default:
+      'Augusto Barros • Full Stack Developer, Mobile Developer & Creative Copywriter',
   },
   description:
     'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros',

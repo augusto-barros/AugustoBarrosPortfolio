@@ -17,7 +17,7 @@ export function TransitionLink({ href, children, ...props }) {
   const pathname = usePathname();
   const { animateTransition } = useTransition();
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     // External links: let browser handle normally
     if (href.startsWith('http')) return;
 
