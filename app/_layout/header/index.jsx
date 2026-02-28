@@ -18,7 +18,7 @@ export function Header() {
       {/* Foreground layer to show the entire character */}
       <div className='absolute left-0 right-0 -top-[15%] h-[130%] md:h-[145%] pointer-events-none'>
         <Image
-          src='/photo/Guto.png'
+          src='/photo/Guto_transparent.png'
           alt='Augusto Barros Personal Picture'
           fill
           sizes='110vw'
