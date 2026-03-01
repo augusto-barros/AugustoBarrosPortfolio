@@ -5,12 +5,10 @@ import { motion } from 'framer-motion';
 export function OffcanvasBackdrop() {
   const windowHeight = window.innerHeight;
 
-  const initialPath = `M100 0 L200 0 L200 ${windowHeight} L100 ${windowHeight} Q-100 ${
-    windowHeight / 2
-  } 100 0`;
-  const targetPath = `M100 0 L200 0 L200 ${windowHeight} L100 ${windowHeight} Q100 ${
-    windowHeight / 2
-  } 100 0`;
+  const initialPath = `M100 0 L200 0 L200 ${windowHeight} L100 ${windowHeight} Q-100 ${windowHeight / 2
+    } 100 0`;
+  const targetPath = `M100 0 L200 0 L200 ${windowHeight} L100 ${windowHeight} Q100 ${windowHeight / 2
+    } 100 0`;
 
   /** @type {import('framer-motion').Variants} */
   const curve = {
@@ -36,7 +34,7 @@ export function OffcanvasBackdrop() {
   };
 
   return (
-    <motion.svg className='absolute right-[600px] top-0 h-full w-24 fill-foreground stroke-none'>
+    <motion.svg className='absolute right-full top-0 h-full w-24 fill-foreground stroke-none'>
       <motion.path
         variants={curve}
         initial='initial'
