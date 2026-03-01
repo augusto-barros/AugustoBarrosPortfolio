@@ -6,8 +6,6 @@ import { useFollowPointer } from '@/hooks';
 
 import {
   ThumbnailAction,
-  ThumbnailCursorCircle,
-  ThumbnailCursorLabel,
   ThumbnailLabel,
   ThumbnailList,
   ThumbnailModal,
@@ -17,10 +15,6 @@ import { scaleUp } from './variants';
 export function Thumbnail() {
   /** @type {import('react').MutableRefObject<HTMLElement>} */
   const modal = useRef(null);
-  /** @type {import('react').MutableRefObject<HTMLElement>} */
-  const cursor = useRef(null);
-  /** @type {import('react').MutableRefObject<HTMLElement>} */
-  const label = useRef(null);
 
   const {
     item: { active, index },
@@ -29,8 +23,6 @@ export function Thumbnail() {
     moveItems,
   } = useFollowPointer({
     modal,
-    cursor,
-    label,
   });
 
   return (
@@ -51,14 +43,6 @@ export function Thumbnail() {
           active={active}
           index={index}
         />
-        <ThumbnailCursorCircle
-          ref={cursor}
-          variants={scaleUp}
-          active={active}
-        />
-        <ThumbnailCursorLabel ref={label} variants={scaleUp} active={active}>
-          View
-        </ThumbnailCursorLabel>
         <ThumbnailAction>
           More work
         </ThumbnailAction>

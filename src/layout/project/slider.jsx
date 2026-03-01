@@ -1,8 +1,8 @@
 'use client';
 
-import { CldImage, CldVideoPlayer } from 'next-cloudinary';
+import { CldVideoPlayer } from 'next-cloudinary';
 
-import { Center } from '@/components';
+import { Center, ClientImage } from '@/components';
 
 /**
  * @param {Object} props
@@ -12,7 +12,7 @@ import { Center } from '@/components';
 export function ProjectSlider({ type, source }) {
   const image =
     type === 'image' ? (
-      <CldImage
+      <ClientImage
         src={source}
         className='object-cover'
         fill={true}

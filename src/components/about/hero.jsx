@@ -12,15 +12,15 @@ export function Hero() {
   };
   return (
     <motion.section
-      className='text-text relative min-h-[80vh] w-full px-10 pt-48 md:px-20'
+      className='text-text relative min-h-[20vh] w-full px-10 pt-48 pb-10 md:px-24 lg:px-36 md:pb-24'
       variants={slideUp}
       initial='initial'
       animate='enter'
     >
-      <div className='flex flex-col gap-10 md:flex-row md:items-start md:justify-between'>
+      <div className='flex flex-col items-center justify-center text-center'>
         <div className='max-w-4xl'>
           <h1 className='text-[clamp(3.5rem,8vw,7rem)] font-medium leading-[1.1] tracking-tight'>
-            Helping brands thrive in the digital world
+            Helping you thrive in the AI-powered world
           </h1>
         </div>
       </div>

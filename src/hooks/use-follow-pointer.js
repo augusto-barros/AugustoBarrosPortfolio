@@ -7,26 +7,14 @@ import { gsap } from 'gsap';
 /**
  * @param {Object} params
  * @param {import('react').MutableRefObject<HTMLElement>} params.modal
- * @param {import('react').MutableRefObject<HTMLElement>} params.cursor
- * @param {import('react').MutableRefObject<HTMLElement>} params.label
  */
-export function useFollowPointer({ modal, cursor, label }) {
+export function useFollowPointer({ modal }) {
   const [item, setItem] = useState({ active: false, index: 0 });
 
   /** @type {import('react').MutableRefObject<number | null>} */
   let xMoveModal = useRef(null);
   /** @type {import('react').MutableRefObject<number | null>} */
   let yMoveModal = useRef(null);
-
-  /** @type {import('react').MutableRefObject<number | null>} */
-  let xMoveCursor = useRef(null);
-  /** @type {import('react').MutableRefObject<number | null>} */
-  let yMoveCursor = useRef(null);
-
-  /** @type {import('react').MutableRefObject<number | null>} */
-  let xMoveLabel = useRef(null);
-  /** @type {import('react').MutableRefObject<number | null>} */
-  let yMoveLabel = useRef(null);
 
   /** @type {(index: number) => void} */
   const handlePointerEnter = useCallback(
@@ -44,10 +32,7 @@ export function useFollowPointer({ modal, cursor, label }) {
   const moveItems = useCallback((x, y) => {
     xMoveModal.current(x);
     yMoveModal.current(y);
-    xMoveCursor.current(x);
-    yMoveCursor.current(y);
-    xMoveLabel.current(x);
-    yMoveLabel.current(y);
+
   }, []);
 
   useEffect(() => {
@@ -62,25 +47,6 @@ export function useFollowPointer({ modal, cursor, label }) {
         ease: 'power3',
       });
 
-      // Move cursor
-      xMoveCursor.current = gsap.quickTo(cursor.current, 'left', {
-        duration: 0.5,
-        ease: 'power3',
-      });
-      yMoveCursor.current = gsap.quickTo(cursor.current, 'top', {
-        duration: 0.5,
-        ease: 'power3',
-      });
-
-      // Move cursor label
-      xMoveLabel.current = gsap.quickTo(label.current, 'left', {
-        duration: 0.45,
-        ease: 'power3',
-      });
-      yMoveLabel.current = gsap.quickTo(label.current, 'top', {
-        duration: 0.45,
-        ease: 'power3',
-      });
     });
 
     return () => ctx.revert();

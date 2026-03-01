@@ -2,7 +2,7 @@ export const workDetails = {
   appcaloria: {
     title: 'AppCaloria',
     liveSiteUrl: 'https://example.com',
-    heroImage: 'Dennis-Portfolio/images/rpmf9egswyd8563mxe9t',
+    heroImage: '/thumbnail/appcaloria.jpeg',
     roleServices: 'Development & Advertising',
     credits: [
       { label: 'Design', name: 'Placeholder Designer' },

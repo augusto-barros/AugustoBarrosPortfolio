@@ -3,9 +3,8 @@
 import { forwardRef } from 'react';
 
 import { motion } from 'framer-motion';
-import { CldImage } from 'next-cloudinary';
 
-import { Center } from '@/components';
+import { Center, ClientImage } from '@/components';
 import { thumbnailOptions } from '@/data';
 import { randomId } from '@/utils';
 
@@ -21,7 +20,7 @@ export const ThumbnailModal = forwardRef(
       const id = randomId();
       return (
         <Center key={id} className='size-full'>
-          <CldImage
+          <ClientImage
             src={image}
             width={320}
             height={320}

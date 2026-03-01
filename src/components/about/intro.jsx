@@ -2,12 +2,20 @@
 
 import { useRef } from 'react';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
 import Image from 'next/image';
 
 export function Intro() {
   const container = useRef(null);
   const isInView = useInView(container, { once: true, margin: '-10%' });
+
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start end', 'end start'],
+  });
+
+  const imgYRaw = useTransform(scrollYProgress, [0, 1], ['-15vh', '15vh']);
+  const imgY = useSpring(imgYRaw, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   const slideUp = {
     initial: { y: 50, opacity: 0 },
@@ -21,35 +29,47 @@ export function Intro() {
   return (
     <section
       ref={container}
-      className='text-text relative flex w-full flex-col items-center gap-16 px-10 py-24 md:flex-row md:gap-32 md:px-20'
+      className='text-text relative flex w-full flex-col items-start gap-16 px-10 py-12 md:flex-row md:gap-32 md:px-0 lg:py-16 mx-auto max-w-[1400px]'
     >
       <motion.div
-        className='flex-1'
+        className='w-full md:w-[35%] flex justify-end px-10 md:px-0 mt-8'
         variants={slideUp}
         initial='initial'
         animate={isInView ? 'enter' : 'initial'}
       >
-        <p className='text-[clamp(1.5rem,3vw,2.5rem)] font-normal leading-snug'>
-          I help companies from all over the world with tailor-made solutions.
-          With each project, I push my work to new horizons, always putting
-          quality first.
-        </p>
+        <div className='flex flex-col gap-8 text-[clamp(0.9rem,1vw,1.1rem)] font-normal leading-relaxed max-w-[400px]'>
+          <p>
+            I am a full stack and mobile developer with a creative copywriting
+            background. I help companies build clear, thoughtful and reliable
+            digital products, shaped by years in advertising and refined through
+            my studies at the Southern Alberta Institute of Technology (SAIT) in
+            Calgary, Canada.
+          </p>
+          <p>
+            I blend technical precision with a creative mindset to craft
+            solutions that feel purposeful and user-centered. With every project,
+            I push for better ideas, cleaner execution and higher quality.
+          </p>
+        </div>
       </motion.div>
 
       <motion.div
-        className='flex w-full flex-1 justify-center md:justify-end'
+        className='w-full md:w-[60%] px-10 md:px-0 md:pr-10 lg:pr-24'
         variants={slideUp}
         initial='initial'
         animate={isInView ? 'enter' : 'initial'}
       >
-        <div className='relative aspect-[4/5] w-full max-w-[450px] overflow-hidden rounded-md'>
-          <Image
-            src='/photo/Guto_portrait.webp'
-            alt='Augusto Barros Portrait'
-            fill
-            className='object-cover grayscale transition-all duration-700 hover:grayscale-0'
-            sizes='(max-width: 768px) 100vw, 50vw'
-          />
+        <div className='relative w-full h-[55vh] md:h-[90vh] min-h-[500px] overflow-hidden rounded-md'>
+          <motion.div style={{ y: imgY }} className='relative w-full h-[calc(100%+30vh)] -top-[15vh]'>
+            <Image
+              src='/photo/about/nyc.webp'
+              alt='Augusto Barros in NYC'
+              fill
+              className='object-cover'
+              sizes='(max-width: 768px) 100vw, 50vw'
+              priority
+            />
+          </motion.div>
         </div>
       </motion.div>
     </section>

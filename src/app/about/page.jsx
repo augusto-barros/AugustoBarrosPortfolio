@@ -1,4 +1,4 @@
-import { Awwwards, Hero, Intro, Services } from '@/components';
+import { Awwwards, Hero, Intro, Experience, TechStack } from '@/components';
 import { Contact, Navbar, Transition } from '@/layout';
 
 /** @type {import('next').Metadata} */
@@ -15,8 +15,8 @@ export default function About() {
       <main>
         <Hero />
         <Intro />
-        <Services />
-        <Awwwards />
+        <TechStack />
+        <Experience />
       </main>
       <Contact />
     </Transition>
