@@ -18,7 +18,7 @@ export function Hero() {
       animate='enter'
     >
       <div className='flex flex-col items-center justify-center text-center'>
-        <div className='max-w-4xl'>
+        <div className='w-full max-w-[90%] md:max-w-[80%] lg:max-w-[1200px]'>
           <h1 className='text-[clamp(3.5rem,8vw,7rem)] font-medium leading-[1.1] tracking-tight'>
             Helping you thrive in the AI-powered world
           </h1>

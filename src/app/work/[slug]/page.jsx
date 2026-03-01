@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { ClientImage, MagneticButton } from '@/components';
+import { ClientImage, MagneticButton, TransitionLink } from '@/components';
 import { workDetails } from '@/data';
 import { Contact, Navbar, Transition } from '@/layout';
 
@@ -141,8 +141,9 @@ export default async function ProjectPage({ params }) {
           {/* Next Case Footer Section */}
           {project.nextProject && (
             <section className='relative flex w-full cursor-pointer flex-col items-center justify-center overflow-hidden bg-[#1c1d20] py-32 text-center text-white md:py-48'>
-              <Link
+              <TransitionLink
                 href={`/work/${project.nextProject.slug}`}
+                transitionLabel={project.nextProject.title}
                 className='z-10 flex w-full flex-col items-center justify-center'
               >
                 <p className='mb-6 text-sm uppercase tracking-wider text-white/50'>
@@ -151,7 +152,7 @@ export default async function ProjectPage({ params }) {
                 <h2 className='text-8xl font-medium tracking-tighter transition-opacity hover:opacity-80 md:text-[150px]'>
                   {project.nextProject.title}
                 </h2>
-              </Link>
+              </TransitionLink>
 
               {/* Central Thumbnail (Absolute center inside Next Case) */}
               <div className='pointer-events-none absolute left-1/2 top-1/2 z-0 h-64 w-48 -translate-x-1/2 -translate-y-1/2 overflow-hidden opacity-40 transition-opacity hover:opacity-100 md:h-80 md:w-64'>
@@ -167,14 +168,14 @@ export default async function ProjectPage({ params }) {
 
               {/* All Work magnetic button bottom */}
               <div className='absolute bottom-10'>
-                <Link href='/work'>
+                <TransitionLink href='/work'>
                   <MagneticButton
                     variant='default'
                     className='flex size-32 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-transparent hover:bg-[#455ce9]'
                   >
                     All work
                   </MagneticButton>
-                </Link>
+                </TransitionLink>
               </div>
             </section>
           )}

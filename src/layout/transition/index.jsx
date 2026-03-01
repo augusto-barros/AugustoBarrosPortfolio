@@ -15,14 +15,12 @@ export function Transition({ children }) {
   const pathname = usePathname();
   const { phase, clientNavRef } = useTransition();
 
-  // If clientNavRef is true, this is a client-side route change, so skip Preloader.
-  // Because in dev mode router.push() can take >1s, phase might already be 'idle' by the time this mounts.
-  const isClientNav = useRef(clientNavRef.current);
-
-  const [isLoading, setLoading] = useState(!isClientNav.current);
+  const [isLoading, setLoading] = useState(!clientNavRef.current);
 
   useEffect(() => {
-    if (isClientNav.current) {
+    // If we've already done a client-side navigation OR the overlay is sweeping,
+    // we never want to show the preloader again.
+    if (clientNavRef.current) {
       setLoading(false);
       window.scrollTo(0, 0);
       return;

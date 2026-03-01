@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-
+import { TransitionLink } from '@/components';
 import { thumbnailOptions } from '@/data';
 
 /**
@@ -34,8 +33,9 @@ export function ThumbnailList({
           moveItems(clientX, clientY);
         }}
       >
-        <Link
+        <TransitionLink
           href={href}
+          transitionLabel={title}
           className='flex items-center justify-between max-lg:flex-wrap'
           passHref
         >
@@ -47,7 +47,7 @@ export function ThumbnailList({
             {title}
           </h4>
           <p className='text-lg font-medium'>{services}</p>
-        </Link>
+        </TransitionLink>
       </li>
     );
   });

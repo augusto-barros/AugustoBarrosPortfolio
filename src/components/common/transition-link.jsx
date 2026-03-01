@@ -10,10 +10,10 @@ function getLabelFromHref(href) {
   if (href === '/') return 'Home';
   if (href.startsWith('/work')) return 'Work';
   if (href.startsWith('/about')) return 'About';
-  return '';
+  // transitionLabel logic inside TransitionLink already provides 'appcaloria'.
 }
 
-export function TransitionLink({ href, children, ...props }) {
+export function TransitionLink({ href, transitionLabel, children, ...props }) {
   const pathname = usePathname();
   const { animateTransition } = useTransition();
 
@@ -34,7 +34,7 @@ export function TransitionLink({ href, children, ...props }) {
 
     // Internal navigation: play the sweep-up transition
     e.preventDefault();
-    const label = getLabelFromHref(href);
+    const label = transitionLabel || getLabelFromHref(href);
     animateTransition(href, label);
   };
 

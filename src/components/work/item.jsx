@@ -23,6 +23,7 @@ export function WorkItem({
     >
       <TransitionLink
         href={href}
+        transitionLabel={title}
         className='flex w-full flex-wrap items-center justify-between p-4 transition-colors hover:bg-black/5 hover:dark:bg-white/5'
         style={{
           paddingBlock: 'clamp(2em,3vw,3em)',

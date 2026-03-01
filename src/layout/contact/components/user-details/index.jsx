@@ -15,7 +15,7 @@ import { Container, ImageWrapper, MainTitle, Row } from './index.styled';
  */
 export function UserDetails({ transformX }) {
   return (
-    <Container className='mx-auto w-full max-w-[90rem] px-[clamp(2em,5vw,4em)] pb-2 pt-[clamp(2em,5vw,4em)]'>
+    <Container className='mx-auto flex flex-1 w-full max-w-[80rem] flex-col justify-center px-[clamp(2em,5vw,4em)] pb-2 pt-[clamp(1em,3vw,2em)]'>
       <Row>
         <div className='flex items-center gap-8'>
           <ImageWrapper>
