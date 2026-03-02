@@ -1,26 +1,30 @@
 export const workDetails = {
   appcaloria: {
-    title: 'AppCaloria',
-    liveSiteUrl: 'https://example.com',
-    heroImage: '/thumbnail/appcaloria.jpeg',
-    roleServices: 'Development & Advertising',
+    title: 'appcaloria',
+    liveSiteUrl: 'https://apps.apple.com/br/app/appcaloria/id6756678606?l=en-GB',
+    heroImage: '/photo/work/appcaloria/hero.png',
+    roleServices: 'Development',
     credits: [
-      { label: 'Design', name: 'Placeholder Designer' },
-      { label: 'Development', name: 'Placeholder Dev' },
+      { label: 'Design', name: 'Augusto Barros, Fill Braga' },
+      { label: 'Development', name: 'Augusto Barros' },
     ],
     location: 'Brasil',
     year: '2026',
     quote:
-      'A revolutionary approach to tracking your daily caloric intake with artificial intelligence.',
+      'appcaloria makes tracking your nutrition effortless, turning everyday choices into meaningful progress.',
     description:
-      'AppCaloria is an innovative mobile application designed to simplify the process of monitoring your diet. By leveraging advanced machine learning, it accurately estimates nutritional information from photos, providing users with a seamless and intuitive experience. Our focus was to build a robust, scalable backend paired with a beautiful, fast, and accessible frontend.',
+      'appcaloria is a completely new way to track your nutrition. No friction, no spreadsheets, no complications. You simply write what you ate, just like you would in the Notes app, and artificial intelligence takes care of the rest.\n\nCalories, macros, and daily totals are calculated automatically, in seconds.\n\nThe easiest way to describe it is: “What if Apple Notes were a nutrition app?”',
+
     galleryImages: [
-      'Dennis-Portfolio/images/hlz36eeb3ddfvqt9tex9',
-      'Dennis-Portfolio/images/aigt2q3xiqb8ovujzscc',
-      'Dennis-Portfolio/images/ahuzarh793qmv9sdveyk',
+      [
+        { label: 'How it works', src: '/photo/work/appcaloria/How.MP4' },
+        { label: 'Barcode Scanner', src: '/photo/work/appcaloria/barcode.MP4' },
+        { label: 'Meal Logging by Photo', src: '/photo/work/appcaloria/photo.MOV' },
+        { label: 'Dark Mode', src: '/photo/work/appcaloria/darkmode.MP4' },
+      ],
     ],
     nextProject: {
-      slug: 'twice', // Just a placeholder to show the layout
+      slug: 'twice',
       title: 'TWICE',
       image: 'Dennis-Portfolio/images/r4kcbkvkl0djjt0mxmcw',
     },

@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }) {
                     variant='default'
                     className='flex size-32 items-center justify-center rounded-full bg-[#455ce9] text-white transition-transform hover:scale-110 hover:bg-[#455ce9]'
                   >
-                    Live site ↗
+                    {slug === 'appcaloria' ? 'iOS version ↗' : 'Live site ↗'}
                   </MagneticButton>
                 </Link>
               )}
@@ -103,8 +103,8 @@ export default async function ProjectPage({ params }) {
             />
           </div>
 
-          {/* Beige Details Section */}
-          <section className='w-full bg-[#e0d9d1] px-4 py-[10vh] md:px-10 md:py-[15vh]'>
+          {/* Dark Details Section */}
+          <section className='w-full bg-[#1c1d20] px-4 py-[10vh] text-white md:px-10 md:py-[15vh]'>
             <div className='mx-auto flex max-w-[1400px] flex-col gap-10 md:flex-row md:gap-20'>
               <div className='md:w-3/5'>
                 <h2 className='text-3xl font-medium leading-tight tracking-tight md:text-5xl lg:text-6xl'>
@@ -112,7 +112,7 @@ export default async function ProjectPage({ params }) {
                 </h2>
               </div>
               <div className='flex flex-col justify-end md:w-2/5'>
-                <p className='max-w-lg text-lg leading-relaxed text-black/80 md:text-xl'>
+                <p className='whitespace-pre-wrap max-w-lg text-lg leading-relaxed text-white/80 md:text-xl'>
                   {project.description}
                 </p>
               </div>
@@ -121,21 +121,111 @@ export default async function ProjectPage({ params }) {
 
           {/* Gallery Section */}
           <section className='w-full'>
-            {project.galleryImages?.map((img, i) => (
-              <div
-                key={i}
-                className='relative h-[60vh] w-full overflow-hidden md:h-screen'
-              >
-                <ClientImage
-                  src={img}
-                  alt={`${project.title} gallery ${i}`}
-                  width={1920}
-                  height={1080}
-                  className='size-full object-cover'
-                  sizes='100vw'
-                />
-              </div>
-            ))}
+            {project.galleryImages?.map((mediaItem, i) => {
+              // Helper to check if file is a video
+              const isVideo = (item) => {
+                const url = typeof item === 'string' ? item : item.src;
+                return url.toLowerCase().endsWith('.mp4') ||
+                  url.toLowerCase().endsWith('.mov');
+              };
+
+              // Helper for rendering a single media element
+              const renderMedia = (item) => {
+                const url = typeof item === 'string' ? item : item.src;
+                const label = typeof item === 'object' ? item.label : null;
+                const video = isVideo(item);
+
+                return (
+                  <div className='flex flex-col items-center gap-8 h-full w-full'>
+                    {video ? (
+                      <div className='relative mx-auto h-full max-h-[80vh] aspect-[9/19.5]'>
+                        {/* iPhone Border/Bezel (Thinner) */}
+                        <div className='relative h-full w-full rounded-[3.2rem] border-[4px] border-[#1a1a1a] bg-[#1a1a1a] p-1 shadow-2xl ring-1 ring-white/10'>
+                          {/* Inner Screen Container */}
+                          <div className='relative h-full w-full overflow-hidden rounded-[2.8rem] bg-black'>
+                            {/* Dynamic Island */}
+                            <div className='absolute left-1/2 top-4 z-20 h-6 w-20 -translate-x-1/2 rounded-full bg-black' />
+
+                            <video
+                              src={url}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              className='size-full object-cover'
+                            />
+                          </div>
+                        </div>
+
+                        {/* Side Buttons (Subtle) */}
+                        <div className='absolute -left-[10px] top-24 h-12 w-[3px] rounded-l-sm bg-[#1a1a1a]' />
+                        <div className='absolute -left-[10px] top-44 h-15 w-[3px] rounded-l-sm bg-[#1a1a1a]' />
+                        <div className='absolute -left-[10px] top-64 h-15 w-[3px] rounded-l-sm bg-[#1a1a1a]' />
+                        <div className='absolute -right-[10px] top-44 h-24 w-[3px] rounded-r-sm bg-[#1a1a1a]' />
+                      </div>
+                    ) : (
+                      <ClientImage
+                        src={url}
+                        alt={`${project.title} gallery`}
+                        width={1920}
+                        height={1080}
+                        className='size-full object-cover'
+                        sizes='100vw'
+                      />
+                    )}
+                    {label && (
+                      <span className='mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40'>
+                        {label}
+                      </span>
+                    )}
+                  </div>
+                );
+              };
+
+              // If it's an array, render side-by-side
+              if (Array.isArray(mediaItem)) {
+                return (
+                  <div
+                    key={i}
+                    className='relative flex w-full flex-col items-center justify-center gap-4 overflow-hidden bg-black/5 py-10 md:h-[100vh] md:flex-row md:py-16'
+                  >
+                    {mediaItem.map((item, j) => (
+                      <div
+                        key={j}
+                        className='flex h-[85vh] w-full items-center justify-center md:flex-1 md:h-full'
+                      >
+                        {renderMedia(item)}
+                      </div>
+                    ))}
+                  </div>
+                );
+              }
+
+              // Normal single item
+              const isSingleVideo = isVideo(mediaItem);
+              return (
+                <div
+                  key={i}
+                  className={`relative w-full overflow-hidden ${isSingleVideo
+                    ? 'flex h-[85vh] items-center justify-center bg-black/5 py-10 md:h-[100vh] md:py-16'
+                    : 'h-[60vh] md:h-screen'
+                    }`}
+                >
+                  {isSingleVideo ? (
+                    renderMedia(mediaItem)
+                  ) : (
+                    <ClientImage
+                      src={mediaItem}
+                      alt={`${project.title} gallery ${i}`}
+                      width={1920}
+                      height={1080}
+                      className='size-full object-cover'
+                      sizes='100vw'
+                    />
+                  )}
+                </div>
+              );
+            })}
           </section>
 
           {/* Next Case Footer Section */}
@@ -154,7 +244,7 @@ export default async function ProjectPage({ params }) {
                 </h2>
               </TransitionLink>
 
-              {/* Central Thumbnail (Absolute center inside Next Case) */}
+              Central Thumbnail (Absolute center inside Next Case)
               <div className='pointer-events-none absolute left-1/2 top-1/2 z-0 h-64 w-48 -translate-x-1/2 -translate-y-1/2 overflow-hidden opacity-40 transition-opacity hover:opacity-100 md:h-80 md:w-64'>
                 <ClientImage
                   src={project.nextProject.image}
