@@ -265,6 +265,33 @@ export default async function ProjectPage({ params }) {
           {/* Extra Gallery Section */}
           {renderGallery(project.extraGalleryImages)}
 
+          {/* Architecture Section */}
+          {project.architectureDescription && (
+            <section className='w-full bg-white px-4 py-[10vh] text-black md:px-10 md:py-[15vh]'>
+              <div className='mx-auto max-w-[1400px]'>
+                <div className='flex flex-col gap-10 lg:flex-row lg:gap-32'>
+                  <div className='lg:w-1/3'>
+                    <h2 className='text-4xl font-medium tracking-tight md:text-5xl lg:text-5xl'>
+                      Technical Overview
+                    </h2>
+                  </div>
+                  <div className='flex flex-col gap-8 lg:w-2/3'>
+                    {/* Visual Separator */}
+                    <div className='h-px w-full bg-black/10 lg:hidden'></div>
+
+                    <div className='flex flex-col gap-6 lg:border-l lg:border-black/10 lg:pl-10'>
+                      {project.architectureDescription.split('\n\n').map((paragraph, index) => (
+                        <p key={index} className='text-lg leading-relaxed text-black/70 md:text-xl'>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* Tech Stack Section */}
           {project.techStack && (
             <section className='w-full bg-[#1c1d20] px-4 pt-[10vh] pb-[30vh] text-white md:px-10 md:pt-[25vh] md:pb-[35vh]'>

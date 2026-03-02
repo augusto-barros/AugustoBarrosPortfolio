@@ -56,7 +56,7 @@ export const workDetails = {
         },
         {
           title: "Smart History",
-          description: "AppCaloria analyzes your eating patterns over time and highlights trends, like days when you consume less protein."
+          description: "appcaloria analyzes your eating patterns over time and highlights trends, like days when you consume less protein."
         },
         {
           title: "Personalized Recommendations",
@@ -84,6 +84,8 @@ export const workDetails = {
         }
       ]
     },
+    architectureDescription:
+      'appcaloria is built around accuracy, performance, and reliable data handling. Photo scanning uses image compression and processing in Cloud Functions, with a fallback model so recognition stays consistent even when the primary API fails. Nutritional calculations run as the user types: input debouncing, local caching by normalized food text, and optimistic UI updates keep the experience responsive under network latency.\n\nData stays consistent by treating Firestore as the source of truth and AsyncStorage as a local cache. Every write updates both; a background queue runs connectivity-dependent tasks—food analysis, image processing, barcode lookups—when the device is back online. Reports and charts rely on pre-aggregated summaries and short-lived caching to reduce repeated reads and keep navigation fast.\n\nThe architecture separates the UI, hooks, and domain services so business logic and integrations (Firestore, Cloud Functions, nutrition APIs, HealthKit, subscriptions) live in dedicated layers. Heavier work and usage limits live in the backend, keeping the client thin and the system easier to extend. The result is an app that feels fast, behaves well offline, keeps data in sync, and delivers precise nutritional insights without trading off usability.',
     techStack: [
       { name: 'React Native', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
       { name: 'Expo', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg' },
