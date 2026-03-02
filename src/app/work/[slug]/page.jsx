@@ -226,6 +226,35 @@ export default async function ProjectPage({ params }) {
                 </div>
               );
             })}
+            {/* How to Use Section */}
+            {project.howToUse && (
+              <section className='w-full bg-white px-4 py-[10vh] text-black md:px-10 md:py-[15vh]'>
+                <div className='mx-auto max-w-[1400px]'>
+                  <div className='mb-16 md:mb-24'>
+                    <h2 className='text-4xl font-medium tracking-tight md:text-6xl lg:text-7xl'>
+                      {project.howToUse.title}
+                    </h2>
+                  </div>
+
+                  <div className='grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4'>
+                    {project.howToUse.steps.map((step, i) => (
+                      <div key={i} className='flex flex-col gap-6'>
+                        <div className='flex items-center gap-4'>
+                          <span className='flex size-8 items-center justify-center rounded-full border border-black/10 text-xs font-medium'>
+                            {i + 1}
+                          </span>
+                          <h3 className='text-xl font-medium'>{step.title}</h3>
+                        </div>
+                        <p className='text-black/60 leading-relaxed'>
+                          {step.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+
           </section>
 
           {/* Next Case Footer Section */}
