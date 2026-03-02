@@ -23,9 +23,11 @@ export function OffcanvasBody() {
       <div className='absolute right-0 top-0 h-screen w-full max-w-[400px] bg-foreground text-background md:max-w-[600px]'>
         <OffcanvasBackdrop />
 
-        <div className='flex h-full flex-col justify-between p-24'>
+        <div className='flex h-full flex-col justify-between p-12 pb-24 md:p-24'>
           <OffcanvasLinks />
-          <OffcanvasFooter />
+          <div className="max-md:pr-12">
+            <OffcanvasFooter />
+          </div>
         </div>
       </div>
     </MotionComponent>

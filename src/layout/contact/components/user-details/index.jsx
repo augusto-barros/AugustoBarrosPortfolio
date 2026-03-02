@@ -17,7 +17,7 @@ export function UserDetails({ transformX }) {
   return (
     <Container className='mx-auto flex flex-1 w-full max-w-[80rem] flex-col justify-center px-[clamp(2em,5vw,4em)] pb-2 pt-[clamp(1em,3vw,2em)]'>
       <Row>
-        <div className='flex items-center gap-8'>
+        <div className='flex items-center gap-4 md:gap-8'>
           <ImageWrapper>
             <Image
               src='/photo/Guto_portrait.webp'
@@ -40,10 +40,10 @@ export function UserDetails({ transformX }) {
       <Row>
         <div className='relative w-full'>
           <div className='h-px bg-muted-foreground' />
-          <div className='absolute right-0 top-0 z-20 -translate-x-1/2 -translate-y-1/2'>
+          <div className='absolute right-0 top-0 z-20 -translate-x-1/2 -translate-y-1/2 max-md:hidden'>
             <motion.div style={{ x: transformX }}>
               <Link href='https://wa.me/5561994111868' passHref>
-                <MagneticButton variant='primary' size='lg'>
+                <MagneticButton variant='primary' size='lg' className='max-md:px-8 max-md:py-10 max-md:text-base'>
                   Get in touch
                 </MagneticButton>
               </Link>

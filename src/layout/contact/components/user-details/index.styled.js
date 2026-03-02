@@ -18,7 +18,11 @@ export const Row = styled.div`
   --default-padding: clamp(2.5em, 10vh, 5em);
 
   &:nth-child(1) {
-    padding-block-end: calc(var(--default-padding) / 2);
+    padding-block-end: calc(var(--default-padding) + 2em);
+
+    @media screen and (min-width: 768px) {
+      padding-block-end: calc(var(--default-padding) / 2);
+    }
   }
 
   &:nth-child(2) {

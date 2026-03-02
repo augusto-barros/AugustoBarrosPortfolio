@@ -28,13 +28,13 @@ export function Header() {
       animate='enter'
     >
       {/* Foreground layer to show the entire character */}
-      <div className='pointer-events-none absolute inset-x-0 top-[-15%] h-[130%] md:h-[145%]'>
+      <div className='pointer-events-none absolute inset-x-0 bottom-0 h-full md:bottom-auto md:top-[-15%] md:h-[145%]'>
         <Image
           src='/photo/Guto_transparent.webp'
           alt='Augusto Barros Personal Picture'
           fill
           sizes='110vw'
-          className='origin-bottom scale-110 object-contain md:scale-105'
+          className='origin-bottom scale-150 object-contain object-bottom md:scale-105 md:object-center'
           priority
         />
       </div>

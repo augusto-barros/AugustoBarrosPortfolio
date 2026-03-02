@@ -1,9 +1,16 @@
 .wrapper {
   position: fixed;
-  top: 0;
   right: 0;
   margin: theme(margin.6);
   z-index: theme(zIndex.40);
+
+  @media (max-width: 767px) {
+    bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    top: 0;
+  }
 }
 
 .burger {
