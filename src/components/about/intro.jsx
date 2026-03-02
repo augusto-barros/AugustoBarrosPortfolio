@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 
-import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
+import { motion, useInView, useScroll, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
 export function Intro() {

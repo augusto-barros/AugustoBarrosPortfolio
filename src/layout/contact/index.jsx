@@ -14,7 +14,7 @@ export function Contact() {
   const { transformX } = useContactSlider(containerRef);
 
   return (
-    <section id='contact' className='relative'>
+    <section id='contact' className='relative -mt-[2px]'>
       <motion.footer
         ref={containerRef}
         className='relative min-h-screen bg-foreground text-background'

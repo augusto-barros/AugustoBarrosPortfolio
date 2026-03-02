@@ -4,9 +4,8 @@ import { useRef } from 'react';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-/** @param {import('react').PropsWithChildren<unknown>} */
-export function WorkCurve({ children }) {
-  /** @type {import('react').MutableRefObject<HTMLElement>} */
+/** @param {import('react').PropsWithChildren<{bgClass?: string}>} */
+export function WorkCurve({ children, bgClass = 'bg-background' }) {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -24,9 +23,9 @@ export function WorkCurve({ children }) {
               so that the horizontal scrollbar is hidden without affecting
               the rest of the layout or stacking context (Navbar).
             */}
-      <div className='relative z-10 w-full overflow-hidden'>
+      <div className='relative z-10 w-full overflow-hidden -mt-[2px]'>
         <motion.div
-          className='ml-[-10vw] w-[120vw] bg-background'
+          className={`ml-[-10vw] w-[120vw] ${bgClass}`}
           style={{
             height: transformY,
             borderRadius: '0 0 50% 50%',

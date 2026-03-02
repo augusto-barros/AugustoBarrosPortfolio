@@ -7,7 +7,3 @@ export const FixedOverlay = styled.div`
   inset: 0;
 `;
 
-export const AbsoluteOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-`;

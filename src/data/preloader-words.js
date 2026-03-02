@@ -10,14 +10,3 @@ export const preloaderWords = [
   'Hallo',
 ];
 
-export const workPreloaderWords = [
-  'Work',
-  'Travail',
-  'Lavoro',
-  'Trabalho',
-  'عمل',
-  '仕事',
-  'Arbete',
-  'Arbeit',
-  'Werk',
-];

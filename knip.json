@@ -1,0 +1,77 @@
+{
+    "$schema": "https://unpkg.com/knip@5/schema.json",
+    "ignoreDependencies": [
+        "@studio-freight/lenis",
+        "class-variance-authority",
+        "cloudinary",
+        "clsx",
+        "framer-motion",
+        "gsap",
+        "lucide-react",
+        "react-wrap-balancer",
+        "styled-components",
+        "tailwind-merge",
+        "eslint",
+        "eslint-config-next",
+        "eslint-config-prettier",
+        "eslint-import-resolver-alias",
+        "eslint-plugin-import",
+        "eslint-plugin-tailwindcss",
+        "postcss-import",
+        "postcss-preset-env",
+        "postcss-styled-syntax",
+        "stylelint",
+        "stylelint-config-standard",
+        "stylelint-config-tailwindcss",
+        "stylelint-order",
+        "tailwindcss-animate"
+    ],
+    "ignoreBinaries": [
+        "eslint",
+        "husky",
+        "lint-staged",
+        "prettier",
+        "stylelint",
+        "tailwindcss",
+        "postcss"
+    ],
+    "compilers": {
+        "css": "knip-postcss",
+        "eslintrc": "knip-eslint"
+    },
+    "paths": {
+        "@/components": [
+            "./src/components/index.js"
+        ],
+        "@/config": [
+            "./src/config/index.js"
+        ],
+        "@/data": [
+            "./src/data/index.js"
+        ],
+        "@/fonts": [
+            "./src/fonts/index.js"
+        ],
+        "@/hooks": [
+            "./src/hooks/index.js"
+        ],
+        "@/layout": [
+            "./src/layout/index.js"
+        ],
+        "@/lib": [
+            "./src/lib/index.js"
+        ],
+        "@/providers": [
+            "./src/providers/index.jsx"
+        ],
+        "@/utils": [
+            "./src/utils/index.js"
+        ],
+        "@/*": [
+            "./src/*"
+        ]
+    },
+    "ignore": [
+        "src/config/metadata.config.js"
+    ]
+}

@@ -1,4 +1,4 @@
-import { Awwwards, Hero, Intro, Experience, TechStack } from '@/components';
+import { Awwwards, Experience, Hero, Intro, TechStack } from '@/components';
 import { Contact, Navbar, Transition } from '@/layout';
 
 /** @type {import('next').Metadata} */
