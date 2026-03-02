@@ -31,7 +31,7 @@ export const Row = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  --image-size: clamp(4.5em, 6.5vw, 8em);
+  --image-size: clamp(3em, 6.5vw, 8em);
 
   position: relative;
   width: var(--image-size);
@@ -39,6 +39,6 @@ export const ImageWrapper = styled.div`
 `;
 
 export const MainTitle = styled.h2`
-  font-size: calc(clamp(3.25em, 7vw, 8em) * 0.875);
+  font-size: calc(clamp(2em, 7vw, 8em) * 0.875);
   line-height: 1.1;
 `;

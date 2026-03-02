@@ -30,13 +30,13 @@ export function WorkItem({
         }}
         passHref
       >
-        <div className='w-2/5 text-4xl font-normal leading-none max-lg:text-2xl'>
+        <div className='w-full lg:w-2/5 text-4xl font-normal leading-none max-lg:mb-4 max-lg:text-4xl'>
           {title}
         </div>
-        <div className='w-1/5 text-lg font-light max-lg:text-sm'>
+        <div className='w-1/2 lg:w-1/5 text-lg font-light max-lg:text-sm text-left'>
           {location}
         </div>
-        <div className='w-[30%] text-lg font-light max-lg:text-sm'>
+        <div className='w-1/2 lg:w-[30%] text-lg font-light max-lg:text-sm text-right lg:text-left'>
           {services}
         </div>
         <div className='w-[10%] text-right text-lg font-light max-lg:hidden'>

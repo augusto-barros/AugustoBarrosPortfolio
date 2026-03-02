@@ -32,13 +32,14 @@ export function Description() {
         </div>
 
         <motion.div
+          className='max-md:hidden'
           whileInView={{ y: '-15%' }}
           viewport={{ once: true }}
           transition={{
             duration: 0.5,
           }}
         >
-          <div className='absolute right-0 top-2/4 max-md:hidden lg:top-full lg:me-10'>
+          <div className='absolute right-0 top-2/4 lg:top-full lg:me-10'>
             <Link href='/about' passHref>
               <MagneticButton variant='ghost' size='xl'>
                 About me

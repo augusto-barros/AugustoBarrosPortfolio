@@ -38,7 +38,7 @@ export function OffcanvasToggle({ isOpen, handleOpen }) {
         size='md'
         variant='ghost'
         className={cn(
-          'border border-solid border-muted-foreground transition-colors',
+          'border border-solid border-muted-foreground transition-colors max-md:scale-75',
           isOpen && 'before:opacity-0 after:opacity-0',
         )}
         onClick={() => handleOpen(!isOpen)}

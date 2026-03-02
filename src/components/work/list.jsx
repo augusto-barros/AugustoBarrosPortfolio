@@ -53,7 +53,7 @@ export function WorkList() {
       </div>
 
       <div className='my-8 flex flex-col gap-10'>
-        <div className='mb-4 flex w-full px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground'>
+        <div className='mb-4 flex w-full px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground max-lg:hidden'>
           <div className='w-2/5'>Client</div>
           <div className='w-1/5'>Location</div>
           <div className='w-[30%]'>Services</div>

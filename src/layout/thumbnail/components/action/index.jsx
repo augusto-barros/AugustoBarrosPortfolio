@@ -7,7 +7,7 @@ export function ThumbnailAction({ children }) {
       <TransitionLink href='/work' passHref>
         <MagneticButton
           variant='outline'
-          className='px-10 py-8 text-base before:-top-1/2 hover:text-background'
+          className='max-md:px-6 max-md:py-4 md:px-10 md:py-8 text-base before:-top-1/2 hover:text-background'
         >
           {children}
         </MagneticButton>

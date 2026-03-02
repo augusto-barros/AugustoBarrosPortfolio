@@ -8,11 +8,12 @@ export const Wrapper = styled.div`
   align-items: stretch;
   justify-content: space-between;
   gap: 2.5rem;
-  padding-block: clamp(4em, 12vw, 20em) clamp(5em, 14vh, 16em);
+  padding-block: clamp(4em, 12vw, 12em) clamp(1em, 5vh, 4em);
   padding-inline: clamp(2.5em, 4vw, 8em);
 
   @media screen and (min-width: ${({ theme }) => theme?.breakpoints?.lg}) {
     flex-wrap: revert;
+    padding-block: clamp(4em, 12vw, 20em) clamp(5em, 14vh, 16em);
   }
 `;
 

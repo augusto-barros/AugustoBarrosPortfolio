@@ -41,8 +41,8 @@ export function Header() {
 
       <div className='relative flex h-full flex-col justify-end gap-2 md:flex-col-reverse md:justify-normal'>
         <div className='select-none'>
-          <h1 className='text-[max(9em,15vw)]'>
-            <ParallaxSlider repeat={4} baseVelocity={2}>
+          <h1 className='text-[max(5em,15vw)] md:text-[max(9em,15vw)]'>
+            <ParallaxSlider repeat={4} baseVelocity={-2}>
               <span className='pe-12'>
                 Augusto Barros
                 <span className='spacer'>—</span>
