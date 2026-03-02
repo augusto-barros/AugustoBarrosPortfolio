@@ -8,10 +8,6 @@ import { useFollowPointer } from '@/hooks';
 
 import { WorkItem } from './item';
 import { WorkModal } from './modal';
-import {
-  ThumbnailCursorCircle,
-  ThumbnailCursorLabel,
-} from '../../layout/thumbnail/components';
 import { scaleUp } from '../../layout/thumbnail/variants';
 
 export function WorkList() {
@@ -19,28 +15,21 @@ export function WorkList() {
 
   /** @type {import('react').MutableRefObject<HTMLElement>} */
   const modal = useRef(null);
-  /** @type {import('react').MutableRefObject<HTMLElement>} */
-  const cursor = useRef(null);
-  /** @type {import('react').MutableRefObject<HTMLElement>} */
-  const label = useRef(null);
+
 
   const {
     item: { active, index },
     handlePointerEnter,
     handlePointerLeave,
     moveItems,
-  } = useFollowPointer({
-    modal,
-    cursor,
-    label,
-  });
+  } = useFollowPointer({ modal });
 
   const filteredOptions =
     activeCategory === 'All'
       ? workOptions
       : workOptions.filter(work =>
-          work.services?.toLowerCase().includes(activeCategory.toLowerCase()),
-        );
+        work.services?.toLowerCase().includes(activeCategory.toLowerCase()),
+      );
 
   return (
     <section
@@ -53,11 +42,10 @@ export function WorkList() {
             key={cat}
             variant='default'
             onClick={() => setActiveCategory(cat)}
-            className={`rounded-full border !px-8 !py-3 text-lg font-light transition-colors ${
-              activeCategory === cat
-                ? 'border-black bg-black text-white hover:bg-black hover:text-white dark:border-white dark:bg-white dark:text-black dark:hover:bg-white dark:hover:text-black'
-                : 'border-border hover:border-black dark:hover:border-white'
-            }`}
+            className={`rounded-full border !px-8 !py-3 text-lg font-light transition-colors ${activeCategory === cat
+              ? 'border-black bg-black text-white hover:bg-black hover:text-white dark:border-white dark:bg-white dark:text-black dark:hover:bg-white dark:hover:text-black'
+              : 'border-border hover:border-black dark:hover:border-white'
+              }`}
           >
             {cat}
           </MagneticButton>
@@ -92,14 +80,7 @@ export function WorkList() {
           active={active}
           index={index}
         />
-        <ThumbnailCursorCircle
-          ref={cursor}
-          variants={scaleUp}
-          active={active}
-        />
-        <ThumbnailCursorLabel ref={label} variants={scaleUp} active={active}>
-          View
-        </ThumbnailCursorLabel>
+
       </div>
     </section>
   );

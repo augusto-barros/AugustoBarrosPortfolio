@@ -138,9 +138,18 @@ export function TransitionProvider({ children }) {
                 transition: 'opacity 0.15s',
               }}
             >
-              <path
+              <motion.path
                 className='fill-foreground'
-                d={`M0 0 L${width} 0 L${width} 0 Q${width / 2} 300 0 0`}
+                initial={{
+                  d: `M0 0 L${width} 0 L${width} 0 Q${width / 2} 300 0 0`,
+                }}
+                animate={{
+                  d:
+                    phase === 'sweepDown'
+                      ? `M0 0 L${width} 0 L${width} 0 Q${width / 2} 0 0 0`
+                      : `M0 0 L${width} 0 L${width} 0 Q${width / 2} 300 0 0`,
+                }}
+                transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
               />
             </svg>
           </motion.div>
