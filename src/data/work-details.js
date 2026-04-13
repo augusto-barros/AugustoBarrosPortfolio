@@ -154,7 +154,7 @@ export const workDetails = {
     liveSiteUrl: '',
     roleServices: 'Creative, Copywriting, Campaign Concept',
     credits: [
-      { label: 'Client', name: 'IDEC' },
+      { label: 'Project', name: 'IDEC' },
       { label: 'Copywriter', name: 'Augusto Barros' },
       { label: 'Art Director', name: 'Renan Belmiro' },
     ],
@@ -213,7 +213,7 @@ export const workDetails = {
     liveSiteUrl: '',
     roleServices: 'Creative, Copywriting, Campaign Concept',
     credits: [
-      { label: 'Client', name: 'Ambev' },
+      { label: 'Project', name: 'Ambev' },
       { label: 'Copywriter', name: 'Augusto Barros' },
       { label: 'Art Director', name: 'Raphael Almeita (PH)' },
     ],
@@ -273,7 +273,7 @@ export const workDetails = {
     roleServices:
       'Development of online and offline campaign materials. Original concept created by the senior creative team.',
     credits: [
-      { label: 'Client', name: 'SECOM' },
+      { label: 'Project', name: 'SECOM' },
       { label: 'Copywriter (supporting)', name: 'Augusto Barros' },
       { label: 'Art Director (supporting)', name: 'Lidia Pessoa' },
       { label: 'Original Concept and Copywriter', name: 'Thiago Diniz' },
