@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { CldImage } from 'next-cloudinary';
 
+import { cn } from '@/utils';
+
 /** @param {string} src */
 function isLocalVideoPath(src) {
   return /\.(mp4|webm|mov)(\?.*)?$/i.test(src);
@@ -18,7 +20,11 @@ export function ClientImage({ src, alt, ...props }) {
   const isLocal = typeof src === 'string' && src.startsWith('/');
 
   if (isLocal && isLocalVideoPath(src)) {
-    const { className, width, height, style } = props;
+    const { className, width, height, style, fill } = props;
+    const coverClass = cn(
+      fill ? 'absolute inset-0 size-full object-cover' : 'size-full object-cover',
+      className,
+    );
     return (
       <video
         src={src}
@@ -27,9 +33,9 @@ export function ClientImage({ src, alt, ...props }) {
         playsInline
         autoPlay
         aria-label={typeof alt === 'string' ? alt : undefined}
-        width={width}
-        height={height}
-        className={className ?? 'size-full object-cover'}
+        width={fill ? undefined : width}
+        height={fill ? undefined : height}
+        className={coverClass}
         style={style}
       />
     );

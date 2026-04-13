@@ -13,7 +13,7 @@ const phrase =
 
 export function Description() {
   return (
-    <article className='container relative'>
+    <article className='container relative z-10'>
       <Wrapper>
         <div className='basis-full lg:basis-9/12'>
           <Title>

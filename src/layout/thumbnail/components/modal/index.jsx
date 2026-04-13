@@ -19,14 +19,15 @@ export const ThumbnailModal = forwardRef(
     const items = thumbnailOptions.map(({ title, image }) => {
       const id = randomId();
       return (
-        <Center key={id} className='size-full'>
+        <div key={id} className='relative size-full shrink-0 overflow-hidden'>
           <ClientImage
             src={image}
-            width={320}
-            height={320}
+            fill
+            sizes='320px'
             alt={`${title} thumbnail image`}
+            className='object-cover'
           />
-        </Center>
+        </div>
       );
     });
 
