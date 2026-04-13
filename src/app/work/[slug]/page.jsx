@@ -7,6 +7,10 @@ import { Contact, Navbar, Transition } from '@/layout';
 
 import { WorkCurve } from '../components/work-curve';
 
+export async function generateStaticParams() {
+  return Object.keys(workDetails).map(slug => ({ slug }));
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = params;
   const project = workDetails[slug];
@@ -230,6 +234,31 @@ export default async function ProjectPage({ params }) {
               </div>
             </div>
           </section>
+
+          {/* Case narrative (e.g. Challenge / Approach) */}
+          {project.caseSections?.length > 0 && (
+            <section className='w-full bg-white px-4 py-[10vh] text-black md:px-10 md:py-[15vh]'>
+              <div className='mx-auto flex max-w-[1400px] flex-col gap-20 md:gap-28'>
+                {project.caseSections.map((section, i) => (
+                  <div
+                    key={i}
+                    className='flex flex-col gap-8 lg:flex-row lg:gap-32'
+                  >
+                    <div className='lg:w-1/3'>
+                      <h2 className='text-4xl font-medium tracking-tight md:text-5xl'>
+                        {section.title}
+                      </h2>
+                    </div>
+                    <div className='flex flex-col gap-6 border-t border-black/10 pt-8 lg:w-2/3 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0'>
+                      <p className='whitespace-pre-wrap text-lg leading-relaxed text-black/70 md:text-xl'>
+                        {section.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Gallery Section */}
           {renderGallery(project.galleryImages)}

@@ -93,4 +93,34 @@ export const workDetails = {
       { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
     ],
   },
+  'pocket-reading': {
+    title: 'Pocket Reading',
+    heroImage: '/photo/work/pocket-reading/hero.jpg',
+    roleServices: 'Creative, Copywriting, Campaign Concept',
+    credits: [
+      { label: 'Copywriter', name: 'Augusto Barros' },
+      { label: 'Creative Director/Copywriter', name: 'Paulo Santos(PC)' },
+      { label: 'Creative Director/Art Director', name: 'Julian Viela' },
+    ],
+    location: 'Brasil',
+    year: '2016-2026',
+    quote:
+      'Pocket Reading delivers five-minute literary excerpts via WhatsApp to help Brazilians build a sustainable reading habit.',
+    description:
+      'Pocket Reading is an advertising concept built around micro-moments: the commute, the coffee line, the pause between meetings. The work treats reading not as a chore but as a reward—short, editorial-led pieces that feel premium in a feed full of noise.\n\nThe campaign pairs restrained art direction with voice-driven copy so each placement feels like a small magazine you actually want to open.\n\nThis case study documents the narrative system, key visuals, and how the idea scales across digital out-of-home, social, and partner placements.',
+    caseSections: [
+      {
+        title: 'Challenge',
+        body:
+          'For the first time, most Brazilians (53%) are classified as non-readers. Books feel expensive, long, and hard to stick with. The habit never forms because the barrier to start is too high.',
+      },
+      {
+        title: 'Approach',
+        body:
+          "The real obstacle wasn't motivation, it was friction. People weren't avoiding reading because they disliked it; they were overwhelmed before they started. Rather than building a new app that users would need to download and learn, the team chose to deliver content inside WhatsApp, already installed on 99% of Brazilian smartphones. Five minutes of text per day lowers the commitment to something manageable. The constraint of using only public domain books shaped the initial library, but kept the service free and accessible from day one.",
+      },
+    ],
+    galleryImages: [],
+    extraGalleryImages: [],
+  },
 };
