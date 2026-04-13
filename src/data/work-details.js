@@ -249,4 +249,72 @@ export const workDetails = {
     ],
     extraGalleryImages: [],
   },
+  'you-have-voice': {
+    title: 'You Have Voice \n(Você Tem Voz)',
+    heroImage: '/photo/work/voz/hero.webp',
+    liveSiteUrl: '',
+    youtubeEmbeds: [
+      { id: 'ho-5QkzZBsU', label: 'Campaign video' },
+      { id: '6JDaygqls3k', label: 'Music video' },
+    ],
+    linksAfterVideoTitle: '#vctemvoz — official campaign podcast',
+    linksAfterVideo: [
+      {
+        embedSrc:
+          'https://open.spotify.com/embed/show/1PsIfo7y3LePCiM3hMn1xb?utm_source=generator',
+        embedTitle: '#vctemvoz — campaign podcast on Spotify',
+        embedHeight: 152,
+      },
+      {
+        href: 'https://open.spotify.com/show/1PsIfo7y3LePCiM3hMn1xb?si=d438715d66f045a9',
+        label: 'Open show in Spotify',
+      },
+    ],
+    roleServices:
+      'Development of online and offline campaign materials. Original concept created by the senior creative team.',
+    credits: [
+      { label: 'Client', name: 'SECOM' },
+      { label: 'Copywriter (supporting)', name: 'Augusto Barros' },
+      { label: 'Art Director (supporting)', name: 'Lidia Pessoa' },
+      { label: 'Original Concept and Copywriter', name: 'Thiago Diniz' },
+      { label: 'Original Concept and Art Director', name: 'Gustavo (Dois)' },
+    ],
+    location: 'Brasil',
+    year: '2019',
+    quote:
+      'When a woman suffers violence, she loses her voice.',
+    description:
+      'Scope on this project: development of online and offline campaign materials (adaptation, rollout, and production support), working from the original concept led by the senior creative team.\n\nFor the International Day for the Elimination of Violence against Women, the agency developed a campaign with Brazilian singers Simone and Simaria. The concept centered on removing the voice from a music video to turn silence into a message about violence against women.\n\nThe insight behind the campaign was clear: when a woman suffers violence, she loses her voice.',
+    caseSections: [
+      {
+        title: 'Challenge',
+        body:
+          'For the International Day for the Elimination of Violence against Women, the challenge was to address the issue in a way that would make people feel it, not just see it. The campaign needed to turn awareness into emotional impact and create a strong enough reaction to start conversations both online and offline.',
+      },
+      {
+        title: 'Approach',
+        body:
+          'Based on a concept created by the senior creative team, the campaign removed the voice from a music video produced with Brazilian singers Simone and Simaria. The idea came from a powerful insight: when a woman suffers violence, she loses her voice. By first releasing the clip without sound, the campaign created discomfort and curiosity. The full version with audio was launched afterward to explain the idea, bring visibility to the issue, and amplify the message through the hashtag #vctemvoz.',
+      },
+    ],
+    galleryImages: [
+      [
+        { label: 'Key visual', src: '/photo/work/voz/voz1.webp' },
+        { label: 'Concept', src: '/photo/work/voz/voz2.webp' },
+      ],
+      {
+        type: 'containRow',
+        images: [
+          '/photo/work/voz/voz3.png',
+          '/photo/work/voz/voz4.png',
+          '/photo/work/voz/voz5.webp',
+        ],
+        maxWidthClass: 'max-w-[min(1280px,96vw)]',
+        maxHeightClass: 'max-h-[min(68vh,720px)]',
+        gapClassName: 'gap-8 md:gap-4',
+        label: 'Titles',
+      },
+    ],
+    extraGalleryImages: [],
+  },
 };

@@ -35,4 +35,13 @@ export const workOptions = [
     image: '/thumbnail/ambev-vaccine-box.jpg',
     category: 'Advertising',
   },
+  {
+    href: '/work/you-have-voice',
+    title: 'You Have Voice (Você Tem Voz)',
+    location: 'Brasil',
+    services: 'Advertising',
+    year: '2019',
+    image: '/thumbnail/voz.webp',
+    category: 'Advertising',
+  },
 ];

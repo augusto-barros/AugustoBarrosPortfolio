@@ -31,6 +31,7 @@ export default async function ProjectPage({ params }) {
 
   const renderGallery = (images) => {
     if (!images || images.length === 0) return null;
+    const galleryTitlePlain = project.title.replace(/\s*\n\s*/g, ' ').trim();
     return (
       <section className='w-full'>
         {images.map((mediaItem, i) => {
@@ -158,6 +159,105 @@ export default async function ProjectPage({ params }) {
                     </div>
                   </div>
                 ))}
+              </div>
+            );
+          }
+
+          if (
+            mediaItem &&
+            typeof mediaItem === 'object' &&
+            !Array.isArray(mediaItem) &&
+            mediaItem.type === 'fullWidthContain' &&
+            typeof mediaItem.src === 'string'
+          ) {
+            const containWrapClass =
+              typeof mediaItem.maxWidthClass === 'string' && mediaItem.maxWidthClass.trim()
+                ? mediaItem.maxWidthClass.trim()
+                : 'max-w-[min(820px,90vw)]';
+            const containMaxHClass =
+              typeof mediaItem.maxHeightClass === 'string' && mediaItem.maxHeightClass.trim()
+                ? mediaItem.maxHeightClass.trim()
+                : 'max-h-[min(80vh,880px)]';
+            return (
+              <div
+                key={i}
+                className='relative w-full bg-white px-4 py-10 text-black md:px-10 md:py-16'
+              >
+                <div className='mx-auto flex w-full max-w-[1400px] flex-col items-center gap-6'>
+                  <div
+                    className={`mx-auto flex w-full flex-col items-center justify-center ${containWrapClass}`}
+                  >
+                    <ClientImage
+                      src={mediaItem.src}
+                      alt={`${galleryTitlePlain} gallery`}
+                      width={1920}
+                      height={1080}
+                      className={`mx-auto h-auto w-full max-w-full object-contain ${containMaxHClass}`}
+                      sizes='(min-width: 820px) 820px, 90vw'
+                    />
+                  </div>
+                  {typeof mediaItem.label === 'string' && mediaItem.label ? (
+                    <span className='text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40'>
+                      {mediaItem.label}
+                    </span>
+                  ) : null}
+                </div>
+              </div>
+            );
+          }
+
+          if (
+            mediaItem &&
+            typeof mediaItem === 'object' &&
+            !Array.isArray(mediaItem) &&
+            mediaItem.type === 'containRow' &&
+            Array.isArray(mediaItem.images) &&
+            mediaItem.images.length > 0 &&
+            mediaItem.images.every(u => typeof u === 'string')
+          ) {
+            const rowMaxW =
+              typeof mediaItem.maxWidthClass === 'string' && mediaItem.maxWidthClass.trim()
+                ? mediaItem.maxWidthClass.trim()
+                : 'max-w-[min(1200px,96vw)]';
+            const rowMaxH =
+              typeof mediaItem.maxHeightClass === 'string' && mediaItem.maxHeightClass.trim()
+                ? mediaItem.maxHeightClass.trim()
+                : 'max-h-[min(70vh,760px)]';
+            const rowGap =
+              typeof mediaItem.gapClassName === 'string' && mediaItem.gapClassName.trim()
+                ? mediaItem.gapClassName.trim()
+                : 'gap-8 md:gap-5';
+            return (
+              <div
+                key={i}
+                className='relative w-full bg-white px-4 py-10 text-black md:px-10 md:py-16'
+              >
+                <div className='mx-auto flex w-full max-w-[1400px] flex-col items-center'>
+                  <div
+                    className={`mx-auto flex w-full flex-col md:flex-row md:items-start md:justify-center ${rowMaxW} ${rowGap}`}
+                  >
+                    {mediaItem.images.map((src, ii) => (
+                      <div
+                        key={ii}
+                        className='flex min-h-0 w-full min-w-0 flex-1 flex-col items-center justify-center md:basis-0'
+                      >
+                        <ClientImage
+                          src={src}
+                          alt={`${galleryTitlePlain} gallery`}
+                          width={1200}
+                          height={1800}
+                          className={`mx-auto h-auto w-full max-w-full object-contain ${rowMaxH}`}
+                          sizes='(min-width: 768px) 34vw, 100vw'
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  {typeof mediaItem.label === 'string' && mediaItem.label ? (
+                    <span className='mt-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40'>
+                      {mediaItem.label}
+                    </span>
+                  ) : null}
+                </div>
               </div>
             );
           }
@@ -366,25 +466,112 @@ export default async function ProjectPage({ params }) {
             </section>
           )}
 
-          {project.youtubeVideoId && (
-            <section className='w-full bg-white px-4 pb-[10vh] pt-8 text-black md:px-10 md:pb-[15vh] md:pt-12'>
-              <div className='mx-auto max-w-[1400px]'>
-                <div className='relative aspect-video w-full overflow-hidden rounded-lg bg-black/5 shadow-sm'>
-                  <iframe
-                    className='absolute left-0 top-0 size-full'
-                    src={`https://www.youtube-nocookie.com/embed/${project.youtubeVideoId}?rel=0${
-                      typeof project.youtubeVideoStartSec === 'number'
-                        ? `&start=${project.youtubeVideoStartSec}`
-                        : ''
-                    }`}
-                    title={`${project.title} — video`}
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                    allowFullScreen
-                  />
+          {(() => {
+            const titlePlain = project.title.replace(/\s*\n\s*/g, ' ').trim();
+            const embeds =
+              Array.isArray(project.youtubeEmbeds) && project.youtubeEmbeds.length > 0
+                ? project.youtubeEmbeds.map(e => ({
+                    id: e.id,
+                    startSec: e.startSec,
+                    label: e.label,
+                  }))
+                : project.youtubeVideoId
+                  ? [
+                      {
+                        id: project.youtubeVideoId,
+                        startSec: project.youtubeVideoStartSec,
+                        label: undefined,
+                      },
+                    ]
+                  : [];
+            if (embeds.length === 0) return null;
+            return (
+              <section className='w-full bg-white px-4 pb-[10vh] pt-8 text-black md:px-10 md:pb-[15vh] md:pt-12'>
+                <div className='mx-auto flex max-w-[1400px] flex-col gap-12 md:gap-16'>
+                  {embeds.map((embed, i) => (
+                    <div key={`${embed.id}-${i}`} className='flex flex-col gap-4'>
+                      {embed.label ? (
+                        <h3 className='text-lg font-medium tracking-tight text-black/80 md:text-xl'>
+                          {embed.label}
+                        </h3>
+                      ) : null}
+                      <div className='relative aspect-video w-full overflow-hidden rounded-lg bg-black/5 shadow-sm'>
+                        <iframe
+                          className='absolute left-0 top-0 size-full'
+                          src={`https://www.youtube-nocookie.com/embed/${embed.id}?rel=0${
+                            typeof embed.startSec === 'number'
+                              ? `&start=${embed.startSec}`
+                              : ''
+                          }`}
+                          title={
+                            embed.label
+                              ? `${titlePlain} — ${embed.label}`
+                              : `${titlePlain} — video`
+                          }
+                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
+              </section>
+            );
+          })()}
+
+          {Array.isArray(project.linksAfterVideo) && project.linksAfterVideo.length > 0 ? (
+            <section className='w-full bg-white px-4 pb-12 text-black md:px-10 md:pb-16'>
+              <div className='mx-auto flex max-w-[1400px] flex-col gap-6 border-t border-black/10 pt-10 md:gap-8 md:pt-12'>
+                {typeof project.linksAfterVideoTitle === 'string' &&
+                project.linksAfterVideoTitle ? (
+                  <h2 className='text-2xl font-medium tracking-tight text-black md:text-3xl'>
+                    {project.linksAfterVideoTitle}
+                  </h2>
+                ) : null}
+                {project.linksAfterVideo.map((item, i) => {
+                  if (typeof item?.embedSrc === 'string' && item.embedSrc) {
+                    return (
+                      <div key={i} className='w-full max-w-full overflow-hidden rounded-xl'>
+                        <iframe
+                          title={
+                            typeof item.embedTitle === 'string' && item.embedTitle
+                              ? item.embedTitle
+                              : '#vctemvoz — Spotify'
+                          }
+                          style={{ borderRadius: 12 }}
+                          src={item.embedSrc}
+                          width='100%'
+                          height={typeof item.embedHeight === 'number' ? item.embedHeight : 152}
+                          frameBorder={0}
+                          allowFullScreen
+                          allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+                          loading='lazy'
+                          className='w-full border-0'
+                        />
+                      </div>
+                    );
+                  }
+                  if (typeof item?.href === 'string' && item.href) {
+                    return (
+                      <a
+                        key={i}
+                        href={item.href}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='group inline-flex w-fit items-center gap-2 text-lg font-medium tracking-tight text-black underline decoration-black/20 underline-offset-4 transition-colors hover:decoration-black md:text-xl'
+                      >
+                        {typeof item.label === 'string' && item.label ? item.label : item.href}
+                        <span className='text-black/50 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5'>
+                          ↗
+                        </span>
+                      </a>
+                    );
+                  }
+                  return null;
+                })}
               </div>
             </section>
-          )}
+          ) : null}
 
           {/* Gallery Section */}
           {renderGallery(project.galleryImages)}
