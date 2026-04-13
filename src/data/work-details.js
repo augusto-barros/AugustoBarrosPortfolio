@@ -96,6 +96,7 @@ export const workDetails = {
   'pocket-reading': {
     title: 'Pocket Reading',
     heroImage: '/photo/work/pocket-reading/hero.jpg',
+    liveSiteUrl: 'https://www.leituradebolso.com.br/',
     roleServices: 'Creative, Copywriting, Campaign Concept',
     credits: [
       { label: 'Copywriter', name: 'Augusto Barros' },
@@ -107,7 +108,7 @@ export const workDetails = {
     quote:
       'Pocket Reading delivers five-minute literary excerpts via WhatsApp to help Brazilians build a sustainable reading habit.',
     description:
-      'Pocket Reading is an advertising concept built around micro-moments: the commute, the coffee line, the pause between meetings. The work treats reading not as a chore but as a reward—short, editorial-led pieces that feel premium in a feed full of noise.\n\nThe campaign pairs restrained art direction with voice-driven copy so each placement feels like a small magazine you actually want to open.\n\nThis case study documents the narrative system, key visuals, and how the idea scales across digital out-of-home, social, and partner placements.',
+      'Daily delivery creates rhythm. The system is built around repetition: same time, same format, same place. Because habit formation depends on consistency, not variety.',
     caseSections: [
       {
         title: 'Challenge',
@@ -120,7 +121,90 @@ export const workDetails = {
           "The real obstacle wasn't motivation, it was friction. People weren't avoiding reading because they disliked it; they were overwhelmed before they started. Rather than building a new app that users would need to download and learn, the team chose to deliver content inside WhatsApp, already installed on 99% of Brazilian smartphones. Five minutes of text per day lowers the commitment to something manageable. The constraint of using only public domain books shaped the initial library, but kept the service free and accessible from day one.",
       },
     ],
-    galleryImages: [],
+    youtubeVideoId: 'Ma8ru3nt4Ac',
+    galleryImages: [
+      '/photo/work/pocket-reading/image1.avif',
+      '/photo/work/pocket-reading/image2.avif',
+      {
+        type: 'pressQuotes',
+        quotes: [
+          {
+            text:
+              'Short texts that can be read on public transport, at red lights or in line at the bank.',
+            source: 'g1.com',
+          },
+          {
+            text:
+              'This is a clever app that encourages entertainment and education.',
+            source: 'Trendhunter',
+          },
+          {
+            text:
+              'Leitura de Bolso — or Pocket Reading — is a new initiative, which offers five minute reads for free via Whatsapp.',
+            source: 'Springwise',
+          },
+        ],
+      },
+      '/photo/work/pocket-reading/image3.avif',
+    ],
+    extraGalleryImages: [],
+  },
+  'high-in': {
+    title: 'High in (Alto em)',
+    liveSiteUrl: '',
+    roleServices: 'Creative, Copywriting, Campaign Concept',
+    credits: [
+      { label: 'Client', name: 'IDEC' },
+      { label: 'Copywriter', name: 'Augusto Barros' },
+      { label: 'Art Director', name: 'Renan Belmiro' },
+    ],
+    location: 'Brasil',
+    year: '2022',
+    quote:
+      'Does Brazil read labels? No. Brazil scrolls the feed, sends voice messages and buys on feeling.',
+    description:
+      'When Brazil\'s health authority mandated warning seals on food packaging. High in sugar. High in sodium. High in saturated fat, they solved half the problem.\n\nThe other half was ours. Getting Brazil to want to look at that little black magnifying glass.',
+    caseSections: [
+      {
+        title: 'Challenge',
+        body:
+          'A mandatory seal is not a campaign.\nA law is not a message.\nAnd a logo on the corner of a package is, for most people, invisible.\n\nThe real problem wasn\'t awareness. It was indifference.\nConsumers had spent decades surrounded by nutritional information and learned, very efficiently, to ignore it.\nThe food industry knew this.\nAnd was counting on it.\n\nHow do you make people care about something they\'ve trained themselves not to see?\nHow do you turn a regulatory update into a cultural moment?\nHow do you make public health policy feel urgent, relevant and, against all odds, shareable?',
+      },
+      {
+        title: 'Approach',
+        body:
+          'We stopped thinking like a health campaign and started thinking like a creator.\nInstead of educating, we provoked. Instead of informing, we entertained. Instead of speaking at people, we handed them something worth passing along.\n\nThe tone wasn\'t institutional. It was human, sharp, a little irreverent, native to the internet.\nThe format followed the logic of the feed: carousels, stories, video, memes.\nThe strategy wasn\'t reach. It was resonance.\n\nWe translated regulation into culture. Technical language into everyday language. Obligation into relevance.',
+      },
+    ],
+    galleryImages: [
+      ['/photo/work/high-in/work1.webp', '/photo/work/high-in/work2.webp'],
+      {
+        type: 'fullViewportPair',
+        images: [
+          '/photo/work/high-in/work14.webp',
+          '/photo/work/high-in/work15.webp',
+        ],
+      },
+      {
+        type: 'galleryMarquee',
+        durationSec: 28,
+        images: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map(
+          n => `/photo/work/high-in/creatives-posts/work${n}.webp`,
+        ),
+      },
+    ],
+    resultsSection: {
+      title: 'Results',
+      body:
+        '26 million unique people reached online.\n5.6 million complete video views.\n2.3 million clicks with a CTR of 1.95%.\n242K likes. 13.6K shares. 3.8K comments.\n8,157 leads via paid social. 1,796 via landing page.\nCost per click up to 92% lower than previous campaigns.\n\nThe campaign exceeded every performance and engagement benchmark.\nIt spilled beyond paid media into meme pages, influencer reposts and organic press coverage.\n\nThe seal was on the package.\nThe work got it into people\'s heads.',
+    },
+    resultsMarquee: {
+      durationSec: 28,
+      gapClassName: 'gap-0',
+      images: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(
+        n => `/photo/work/high-in/results/r${n}.webp`,
+      ),
+    },
     extraGalleryImages: [],
   },
 };

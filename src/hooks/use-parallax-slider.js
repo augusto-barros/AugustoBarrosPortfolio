@@ -12,7 +12,12 @@ import {
   wrap,
 } from 'framer-motion';
 
-export function useParallaxSlider(baseVelocity = 100) {
+/**
+ * @param {number} baseVelocity
+ * @param {number} [repeat] — number of repeated segments; wrap range is 100/repeat percent (same idea as ParallaxSlider `repeat`)
+ * @param {{ current: boolean } | undefined} [pauseRef] — when `current` is true, motion pauses (e.g. hover)
+ */
+export function useParallaxSlider(baseVelocity = 100, repeat = 4, pauseRef) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -24,15 +29,13 @@ export function useParallaxSlider(baseVelocity = 100) {
     clamp: false,
   });
 
-  /**
-   * This is a magic wrapping for the length of the text - you
-   * have to replace for wrapping that works for you or dynamically
-   * calculate
-   */
-  const x = useTransform(baseX, v => `${wrap(-20, -45, v)}%`);
+  const segment = 100 / Math.max(1, repeat);
+  const x = useTransform(baseX, v => `${wrap(-segment, 0, v)}%`);
 
   const directionFactor = useRef(1);
   useAnimationFrame((t, delta) => {
+    if (pauseRef?.current) return;
+
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
     /**

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { ClientImage, MagneticButton, TransitionLink } from '@/components';
+import { ClientImage, MagneticButton, TransitionLink, WorkGalleryMarquee } from '@/components';
 import { workDetails } from '@/data';
 import { Contact, Navbar, Transition } from '@/layout';
 
@@ -44,10 +44,11 @@ export default async function ProjectPage({ params }) {
           };
 
           // Helper for rendering a single media element
-          const renderMedia = (item) => {
+          const renderMedia = (item, { rowStillOnly = false } = {}) => {
             const url = typeof item === 'string' ? item : item.src;
             const label = typeof item === 'object' ? item.label : null;
             const video = isVideo(item);
+            const showFullImage = rowStillOnly && !video;
 
             return (
               <div className='flex h-full w-full flex-col items-center gap-8'>
@@ -80,8 +81,12 @@ export default async function ProjectPage({ params }) {
                     alt={`${project.title} gallery`}
                     width={1920}
                     height={1080}
-                    className='size-full object-cover'
-                    sizes='100vw'
+                    className={
+                      showFullImage
+                        ? 'h-auto max-h-[min(85vh,920px)] w-full max-w-full object-contain'
+                        : 'size-full object-cover'
+                    }
+                    sizes={showFullImage ? '(min-width: 768px) 50vw, 100vw' : '100vw'}
                   />
                 )}
                 {label && (
@@ -93,19 +98,119 @@ export default async function ProjectPage({ params }) {
             );
           };
 
-          // If it's an array, render side-by-side
-          if (Array.isArray(mediaItem)) {
+          if (
+            mediaItem &&
+            typeof mediaItem === 'object' &&
+            !Array.isArray(mediaItem) &&
+            mediaItem.type === 'pressQuotes' &&
+            Array.isArray(mediaItem.quotes)
+          ) {
             return (
               <div
                 key={i}
-                className='relative flex w-full flex-col items-center justify-center gap-4 overflow-hidden bg-black/5 py-10 md:h-[100vh] md:flex-row md:py-16'
+                className='relative w-full bg-white px-4 py-16 text-black md:px-10 md:py-24'
+              >
+                <div className='mx-auto flex max-w-[1400px] flex-col gap-12 md:flex-row md:gap-10 lg:gap-12'>
+                  {mediaItem.quotes.map((q, qi) => (
+                    <blockquote
+                      key={qi}
+                      className='flex flex-1 flex-col justify-between gap-6 border-t border-black/10 pt-8 first:border-t-0 first:pt-0 md:border-l md:border-t-0 md:pl-8 md:pt-0 md:first:border-l-0 md:first:pl-0'
+                    >
+                      <p className='text-lg leading-relaxed text-black/85 md:text-xl'>
+                        &ldquo;{q.text}&rdquo;
+                      </p>
+                      <cite className='not-italic text-xs font-semibold uppercase tracking-[0.2em] text-black/45'>
+                        {q.source}
+                      </cite>
+                    </blockquote>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          if (
+            mediaItem &&
+            typeof mediaItem === 'object' &&
+            !Array.isArray(mediaItem) &&
+            mediaItem.type === 'fullViewportPair' &&
+            Array.isArray(mediaItem.images) &&
+            mediaItem.images.length === 2
+          ) {
+            return (
+              <div
+                key={i}
+                className='relative flex w-full flex-col bg-white md:h-screen md:min-h-0 md:flex-row'
+              >
+                {mediaItem.images.map((url, ii) => (
+                  <div
+                    key={ii}
+                    className='relative h-[50dvh] min-h-0 w-full min-w-0 md:h-full md:flex-1'
+                  >
+                    <div className='relative size-full min-h-0 min-w-0'>
+                      <ClientImage
+                        src={url}
+                        alt={`${project.title} gallery`}
+                        fill
+                        className='object-contain object-center'
+                        sizes='(min-width: 768px) 50vw, 100vw'
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          }
+
+          if (
+            mediaItem &&
+            typeof mediaItem === 'object' &&
+            !Array.isArray(mediaItem) &&
+            mediaItem.type === 'galleryMarquee' &&
+            Array.isArray(mediaItem.images) &&
+            mediaItem.images.length > 0
+          ) {
+            return (
+              <WorkGalleryMarquee
+                key={i}
+                title={project.title}
+                images={mediaItem.images}
+                gapClassName={
+                  typeof mediaItem.gapClassName === 'string'
+                    ? mediaItem.gapClassName
+                    : undefined
+                }
+                durationSec={
+                  typeof mediaItem.durationSec === 'number'
+                    ? mediaItem.durationSec
+                    : undefined
+                }
+              />
+            );
+          }
+
+          // If it's an array, render side-by-side
+          if (Array.isArray(mediaItem)) {
+            const rowStillOnly = mediaItem.every(item => !isVideo(item));
+            return (
+              <div
+                key={i}
+                className={`relative flex w-full flex-col items-center justify-center gap-4 overflow-hidden py-10 md:flex-row md:py-16 ${
+                  rowStillOnly
+                    ? 'bg-white md:min-h-0'
+                    : 'bg-black/5 md:h-[100vh]'
+                }`}
               >
                 {mediaItem.map((item, j) => (
                   <div
                     key={j}
-                    className='flex h-[85vh] w-full items-center justify-center md:h-full md:flex-1'
+                    className={
+                      rowStillOnly
+                        ? 'flex w-full flex-1 items-center justify-center px-3 py-4 md:w-1/2 md:px-6'
+                        : 'flex h-[85vh] w-full items-center justify-center md:h-full md:flex-1'
+                    }
                   >
-                    {renderMedia(item)}
+                    {renderMedia(item, { rowStillOnly })}
                   </div>
                 ))}
               </div>
@@ -207,17 +312,18 @@ export default async function ProjectPage({ params }) {
             </div>
           </div>
 
-          {/* Hero Main Image - Full bleed */}
-          <div className='relative mb-0 h-[60vh] w-full overflow-hidden md:h-[80vh]'>
-            <ClientImage
-              src={project.heroImage}
-              alt={project.title}
-              width={1920}
-              height={1080}
-              className='size-full object-cover'
-              sizes='100vw'
-            />
-          </div>
+          {project.heroImage ? (
+            <div className='relative mb-0 h-[60vh] w-full overflow-hidden md:h-[80vh]'>
+              <ClientImage
+                src={project.heroImage}
+                alt={project.title}
+                width={1920}
+                height={1080}
+                className='size-full object-cover'
+                sizes='100vw'
+              />
+            </div>
+          ) : null}
 
           {/* Dark Details Section */}
           <section className='w-full bg-[#1c1d20] px-4 py-[10vh] text-white md:px-10 md:py-[15vh]'>
@@ -260,8 +366,60 @@ export default async function ProjectPage({ params }) {
             </section>
           )}
 
+          {project.youtubeVideoId && (
+            <section className='w-full bg-white px-4 pb-[10vh] pt-8 text-black md:px-10 md:pb-[15vh] md:pt-12'>
+              <div className='mx-auto max-w-[1400px]'>
+                <div className='relative aspect-video w-full overflow-hidden rounded-lg bg-black/5 shadow-sm'>
+                  <iframe
+                    className='absolute left-0 top-0 size-full'
+                    src={`https://www.youtube-nocookie.com/embed/${project.youtubeVideoId}?rel=0`}
+                    title={`${project.title} — video`}
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* Gallery Section */}
           {renderGallery(project.galleryImages)}
+
+          {project.resultsSection && (
+            <section className='w-full bg-white px-4 py-[10vh] text-black md:px-10 md:py-[15vh]'>
+              <div className='mx-auto flex max-w-[1400px] flex-col gap-8 lg:flex-row lg:gap-32'>
+                <div className='lg:w-1/3'>
+                  <h2 className='text-4xl font-medium tracking-tight md:text-5xl'>
+                    {project.resultsSection.title}
+                  </h2>
+                </div>
+                <div className='flex flex-col gap-6 border-t border-black/10 pt-8 lg:w-2/3 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0'>
+                  <p className='whitespace-pre-wrap text-lg leading-relaxed text-black/70 md:text-xl'>
+                    {project.resultsSection.body}
+                  </p>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {project.resultsMarquee?.images?.length > 0 && (
+            <WorkGalleryMarquee
+              title={project.title}
+              images={project.resultsMarquee.images}
+              altSegment='results'
+              gapClassName={
+                typeof project.resultsMarquee.gapClassName === 'string'
+                  ? project.resultsMarquee.gapClassName
+                  : 'gap-0'
+              }
+              durationSec={
+                typeof project.resultsMarquee.durationSec === 'number'
+                  ? project.resultsMarquee.durationSec
+                  : undefined
+              }
+            />
+          )}
+
           {/* How to Use Section */}
           {project.howToUse && (
             <section className='w-full bg-white px-4 py-[10vh] text-black md:px-10 md:py-[15vh]'>

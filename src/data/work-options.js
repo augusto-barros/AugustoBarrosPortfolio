@@ -17,4 +17,13 @@ export const workOptions = [
     image: '/thumbnail/pocket-reading.mp4',
     category: 'Advertising',
   },
+  {
+    href: '/work/high-in',
+    title: 'High in (Alto em)',
+    location: 'Brasil',
+    services: 'Advertising',
+    year: '2022',
+    image: '/thumbnail/high-in.webp',
+    category: 'Advertising',
+  },
 ];
