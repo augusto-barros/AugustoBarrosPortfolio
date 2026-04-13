@@ -372,7 +372,11 @@ export default async function ProjectPage({ params }) {
                 <div className='relative aspect-video w-full overflow-hidden rounded-lg bg-black/5 shadow-sm'>
                   <iframe
                     className='absolute left-0 top-0 size-full'
-                    src={`https://www.youtube-nocookie.com/embed/${project.youtubeVideoId}?rel=0`}
+                    src={`https://www.youtube-nocookie.com/embed/${project.youtubeVideoId}?rel=0${
+                      typeof project.youtubeVideoStartSec === 'number'
+                        ? `&start=${project.youtubeVideoStartSec}`
+                        : ''
+                    }`}
                     title={`${project.title} — video`}
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                     allowFullScreen

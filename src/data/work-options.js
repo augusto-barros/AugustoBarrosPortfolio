@@ -26,4 +26,13 @@ export const workOptions = [
     image: '/thumbnail/high-in.webp',
     category: 'Advertising',
   },
+  {
+    href: '/work/ambev-vaccine-box',
+    title: 'Ambev Vaccine Box',
+    location: 'Brasil',
+    services: 'Advertising',
+    year: '2021',
+    image: '/thumbnail/ambev-vaccine-box.jpg',
+    category: 'Advertising',
+  },
 ];

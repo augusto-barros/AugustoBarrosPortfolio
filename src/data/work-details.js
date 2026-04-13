@@ -207,4 +207,46 @@ export const workDetails = {
     },
     extraGalleryImages: [],
   },
+  'ambev-vaccine-box': {
+    title: 'Ambev Vaccine Box',
+    heroImage: '/photo/work/ambev/hero.webp',
+    liveSiteUrl: '',
+    roleServices: 'Creative, Copywriting, Campaign Concept',
+    credits: [
+      { label: 'Client', name: 'Ambev' },
+      { label: 'Copywriter', name: 'Augusto Barros' },
+      { label: 'Art Director', name: 'Raphael Almeita (PH)' },
+    ],
+    location: 'Brasil',
+    year: '2021',
+    quote:
+      'The same boxes built for Carnival on the beach became cold chain for the country’s vaccine rollout.',
+    description:
+      'In this idea, I started from a clear social tension: Brazil’s health care system was overwhelmed by COVID 19 cases, while a company with enormous scale, logistics, and influence had the potential to make a real difference.\n\n The concept proposed that the world’s largest beer producer could go beyond its commercial role and actively help accelerate vaccination in Brazil.\n\nBy connecting brand power with public health impact, the idea turned a private player into part of the solution during a national emergency.',
+    caseSections: [
+      {
+        title: 'Challenge',
+        body:
+          'In 2021, one of Brazil’s biggest vaccination challenges was not just access, but storage. Many COVID 19 vaccines depended on subzero temperatures, while countless locations across the country lacked the refrigeration needed to handle demand. In a fight against time, distribution depended on solving the cold chain first.',
+      },
+      {
+        title: 'Approach',
+        body:
+          'The approach was to transform Ambev’s existing refrigeration structure into a public health solution. Refrigerators already produced for the brand’s beverage operation would be donated to the SUS to increase vaccine storage capacity in capitals and hard to reach areas.\n\nTo complete the system, coolers originally used during Carnival were repurposed to make vaccine transportation faster, safer, and more viable.',
+      },
+    ],
+    youtubeVideoId: '0wbkkRLsFTM',
+    youtubeVideoStartSec: 0,
+    galleryImages: [
+      [
+        '/photo/work/ambev/media/media1.png',
+        '/photo/work/ambev/media/media2.png',
+      ],
+      [
+        '/photo/work/ambev/media/media4.png',
+        '/photo/work/ambev/media/media5.png',
+      ],
+    ],
+    extraGalleryImages: [],
+  },
 };
