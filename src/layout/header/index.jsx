@@ -1,13 +1,25 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 
 import { ParallaxSlider } from '@/components';
 import { useTransition } from '@/providers/transition-context';
 
+const ROLES = ['Developer', 'Copywriter,'];
+
 export function Header() {
   const { phase } = useTransition();
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % ROLES.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
   // On client-side navigation the sweep overlay handles the reveal — no delay needed.
   // On initial load (phase === 'idle') we wait for the Preloader to finish.
   const animDelay = phase !== 'idle' ? 0.1 : 2.5;
@@ -53,10 +65,22 @@ export function Header() {
 
         <div className='md:ml-auto'>
           <div className='mx-10 max-md:my-12 md:mx-36'>
-            <h4 className='text-[clamp(1.55em,2.5vw,2.75em)]'>
-              <span className='block'>Full Stack Developer</span>
-              <span className='block'>Mobile Developer</span>
-              <span className='block'>Creative Copywriter</span>
+            <h4 className='flex items-baseline gap-[0.25em] text-[clamp(1.9em,3vw,3.25em)]'>
+              <span>Creative</span>
+              <span className='inline-block overflow-hidden' style={{ width: '10ch' }}>
+                <AnimatePresence mode='wait'>
+                  <motion.span
+                    key={ROLES[roleIndex]}
+                    className='block'
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: '0%', opacity: 1 }}
+                    exit={{ y: '-100%', opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.33, 1, 0.68, 1] }}
+                  >
+                    {ROLES[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </h4>
           </div>
         </div>
