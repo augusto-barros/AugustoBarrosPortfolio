@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { ParallaxSlider } from '@/components';
 import { useTransition } from '@/providers/transition-context';
 
-const ROLES = ['Developer', 'Copywriter,'];
+const ROLES = ['Developer', 'Copywriter'];
 
 export function Header() {
   const { phase } = useTransition();
