@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { ClientImage, MagneticButton, TransitionLink, WorkGalleryMarquee } from '@/components';
+import { createPageMetadata } from '@/config';
 import { workDetails } from '@/data';
 import { Contact, Navbar, Transition } from '@/layout';
 
@@ -15,12 +16,20 @@ export async function generateMetadata({ params }) {
   const { slug } = params;
   const project = workDetails[slug];
 
-  if (!project) return { title: 'Project Not Found' };
+  if (!project) {
+    return createPageMetadata({
+      title: 'Projeto não encontrado',
+      path: `/work/${slug}`,
+      noIndex: true,
+    });
+  }
 
-  return {
-    title: `${project.title} - Work`,
-    description: project.description,
-  };
+  return createPageMetadata({
+    title: project.title,
+    description: project.description.replace(/\s+/g, ' ').trim(),
+    path: `/work/${slug}`,
+    image: project.heroImage,
+  });
 }
 
 export default async function ProjectPage({ params }) {

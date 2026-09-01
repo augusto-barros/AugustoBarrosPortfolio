@@ -1,14 +1,10 @@
 import { WorkList } from '@/components';
+import { createPageMetadata } from '@/config';
 import { Contact, Navbar, Transition } from '@/layout';
 
 import { WorkCurve } from './components/work-curve';
 
-/** @type {import('next').Metadata} */
-export const metadata = {
-  title: 'Work',
-  description:
-    'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros',
-};
+export const metadata = createPageMetadata({ title: 'Projetos', path: '/work' });
 
 export default function Work() {
   return (

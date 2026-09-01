@@ -1,17 +1,13 @@
-import { InProgress } from '@/components';
-import { Transition } from '@/layout';
+import { createPageMetadata } from '@/config';
 
-/** @type {import('next').Metadata} */
-export const metadata = {
-  title: 'Contact',
-  description:
-    'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros',
-};
+import { ContactRedirect } from './contact-redirect';
 
-export default function Contact() {
-  return (
-    <Transition>
-      <InProgress>Contact Page</InProgress>
-    </Transition>
-  );
+export const metadata = createPageMetadata({
+  title: 'Contato',
+  path: '/contact',
+  noIndex: true,
+});
+
+export default function ContactPage() {
+  return <ContactRedirect />;
 }

@@ -1,7 +1,7 @@
 {
   "name": "augusto-barros-portfolio",
-  "title": "Augusto Barros • Full Stack Developer, Mobile Developer & Creative Copywriter",
-  "description": "Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros",
+  "title": "Augusto Barros • Desenvolvedor Full Stack, Mobile & Copywriter Criativo",
+  "description": "Desenvolvedor full stack e mobile com background em copywriting criativo. Crio produtos digitais claros, confiáveis e centrados no usuário, unindo precisão técnica e visão criativa — com experiência em publicidade e formação na SAIT (Calgary, Canadá).",
   "author": {
     "name": "Augusto Barros",
     "email": "augusto@example.com",
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "Design",
-    "Develope",
+    "Desenvolvimento",
     "Freelance"
   ],
   "version": "0.1.0",
@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.29",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.9.0",
     "clsx": "^2.0.0",
