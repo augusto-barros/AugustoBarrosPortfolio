@@ -1,33 +1,47 @@
+const siteUrl = 'https://augustobarros.work';
+
+const siteDescription =
+  'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros';
+
 /** @type {import('next').Metadata} */
 export const rootMetadata = {
-  metadataBase: new URL('https://dennis-snellenberg-portfolio.vercel.app/'),
+  metadataBase: new URL(siteUrl),
   title: {
     template: '%s | Augusto Barros',
     default:
       'Augusto Barros • Full Stack Developer, Mobile Developer & Creative Copywriter',
   },
-  description:
-    'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros',
+  description: siteDescription,
   generator: 'Augusto Barros',
   applicationName: 'Augusto Barros',
   referrer: 'origin-when-cross-origin',
-  keywords: ['Design', 'Develope', 'Freelance'],
-  authors: [
-    { name: 'Ali Bagheri', url: 'https://www.github.com/alibagheri2079' },
-  ],
-  creator: 'Ali Bagheri',
-  publisher: 'Ali Bagheri',
+  keywords: ['Design', 'Development', 'Freelance'],
+  authors: [{ name: 'Augusto Barros', url: siteUrl }],
+  creator: 'Augusto Barros',
+  publisher: 'Augusto Barros',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName: 'Augusto Barros',
+    title: 'Augusto Barros',
+    description: siteDescription,
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Augusto Barros — Creative Developer & Copywriter',
+      },
+    ],
+  },
   twitter: {
     card: 'summary_large_image',
     title: 'Augusto Barros',
-    description:
-      'Helping brands thrive in the digital world. Located in The Netherlands. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Augusto Barros',
-    siteId: '1467726470533754880',
-    creator: '@AliBagheri2079',
-    creatorId: '1467726470533754880',
+    description: siteDescription,
     images: {
-      url: 'https://dennis-snellenberg-portfolio.vercel.app/screenshot.png',
-      alt: 'Portfolio Screenshot',
+      url: '/og-image.jpg',
+      alt: 'Augusto Barros — Creative Developer & Copywriter',
     },
   },
   robots: {
